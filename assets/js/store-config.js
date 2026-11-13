@@ -20,6 +20,20 @@
   const PIN_KEY = "CHHIPA_ADMIN_PIN";
   const DEFAULT_PIN = "1965";
 
+  /**
+   * ==========================================================================
+   * 🌟 DEVELOPER CONFIGURATION: DEFAULT PUBLISHED GOOGLE SHEET CSV URL
+   * ==========================================================================
+   * To make sure EVERY new customer across the world automatically fetches
+   * your live prices, stock status, and products without needing to enter
+   * anything in localStorage, paste your published Google Sheet CSV link below:
+   * 
+   * Example:
+   * const DEFAULT_GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1v.../pub?output=csv";
+   * ==========================================================================
+   */
+  const DEFAULT_GOOGLE_SHEET_CSV_URL = "";
+
   // Default Fallback Data - Comprehensive, realistic 1965 heritage catalog
   const DEFAULT_SITE_DATA = {
     version: "1.1",
@@ -444,7 +458,7 @@
 
     // Cloud Sync Configuration (Google Sheets CSV URL)
     cloudSync: {
-      googleSheetCsvUrl: "",
+      googleSheetCsvUrl: DEFAULT_GOOGLE_SHEET_CSV_URL,
       lastSyncedAt: null,
       autoSyncOnLoad: true
     }
@@ -533,6 +547,12 @@
       }
 
       this._initialized = true;
+
+      // Prioritize DEFAULT_GOOGLE_SHEET_CSV_URL if configured in code and not set in cache
+      if (DEFAULT_GOOGLE_SHEET_CSV_URL && (!this._data.cloudSync || !this._data.cloudSync.googleSheetCsvUrl)) {
+        if (!this._data.cloudSync) this._data.cloudSync = {};
+        this._data.cloudSync.googleSheetCsvUrl = DEFAULT_GOOGLE_SHEET_CSV_URL;
+      }
 
       // 2. Try Google Sheets (Tier 1) if configured and enabled
       if (this._data.cloudSync && this._data.cloudSync.googleSheetCsvUrl && this._data.cloudSync.autoSyncOnLoad) {

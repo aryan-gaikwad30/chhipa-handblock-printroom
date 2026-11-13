@@ -473,6 +473,15 @@
             </p>
           </div>
 
+          <!-- Developer Global Deployment Tip -->
+          <div class="p-4 rounded-xl bg-amber-50 border border-amber-300 text-xs text-amber-950 flex items-start gap-3">
+            <span class="text-lg flex-shrink-0">💡</span>
+            <div class="space-y-1">
+              <span class="font-bold text-amber-900 block">Crucial Developer Tip for Global Deployment:</span>
+              <p>Pasting the CSV link in this dashboard saves it in your browser's <code>localStorage</code>. To ensure <strong>every single new customer</strong> who visits your website worldwide automatically fetches from your Google Sheet on load without needing manual setup, paste your <code>output=csv</code> link directly into <code>DEFAULT_GOOGLE_SHEET_CSV_URL</code> at line 22 of <code>assets/js/store-config.js</code> before deploying to Vercel, Netlify, or GitHub Pages.</p>
+            </div>
+          </div>
+
           <!-- Link input and test button -->
           <div class="space-y-4">
             <div>

@@ -33,6 +33,10 @@ Designed with an authentic Rajasthani heritage luxury aesthetic: warm unbleached
 3. **Tier 3: Default Fallback Data**:
    - Complete, realistic 1965 heritage catalog (12 products, calculator rates, workshop info) so the site never shows a blank screen or breaks.
 
+> [!TIP]
+> **Crucial Setup Tip Before Production Deployment:**
+> When you test the Google Sheet link inside `admin.html`, it is cached in your current browser's `localStorage`. To ensure **every new customer** who visits your website worldwide automatically fetches your live Google Sheet feed on load without needing manual setup, paste your published Google Sheet CSV link (`...pub?output=csv`) directly into `const DEFAULT_GOOGLE_SHEET_CSV_URL = ""` at line 22 of [assets/js/store-config.js](file:///d:/website/assets/js/store-config.js).
+
 ---
 
 ## 🔒 Built-In Owner Admin Dashboard (`admin.html`)
