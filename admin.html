@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Owner Admin Desk | Chhipa Handblock Printroom (Est. 1965)</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cotton: '#FAF6F0',
+            'cotton-card': '#FFFFFF',
+            'cotton-tint': '#F3ECE1',
+            'cotton-border': '#E8DECE',
+            indigo: {
+              DEFAULT: '#1B365D',
+              dark: '#12243F',
+              light: '#2A4C7E',
+            },
+            madder: {
+              DEFAULT: '#B84A39',
+              dark: '#98382A',
+              light: '#D25E4D',
+            },
+            charcoal: {
+              DEFAULT: '#1E1E1E',
+              muted: '#575757',
+            },
+            gold: {
+              DEFAULT: '#C29B38',
+              light: '#E5C368',
+            }
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'Playfair Display', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo-symbol.svg" />
+</head>
+<body class="bg-[#FAF6F0] text-[#1E1E1E] font-sans antialiased min-h-screen">
+
+  <!-- =========================================================================
+       1. OWNER PIN LOCK SCREEN
+       ========================================================================= -->
+  <div id="pin-lock-screen" class="fixed inset-0 z-50 bg-[#12243F] flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-8 text-center shadow-2xl border border-amber-300/20">
+      
+      <!-- Emblem -->
+      <div class="w-16 h-16 mx-auto mb-4 bg-[#FAF6F0] rounded-full p-2 border-2 border-[#1B365D]">
+        <img src="assets/images/logo-symbol.svg" alt="Chhipa Handblock Emblem" class="w-full h-full object-contain" />
+      </div>
+
+      <span class="text-[11px] font-bold uppercase tracking-widest text-[#B84A39]">Sanganer Workshop Desk</span>
+      <h2 class="font-serif-heading text-2xl font-bold text-[#1B365D] mt-1">Owner Admin Portal</h2>
+      <p class="text-xs text-stone-600 mt-2">
+        Enter your 4-digit security PIN to manage products, prices, wholesale rates, and contacts.
+      </p>
+
+      <!-- PIN Input & Keypad -->
+      <form id="pin-form" onsubmit="event.preventDefault(); handlePinSubmit();" class="mt-6 space-y-4">
+        <div>
+          <input 
+            type="password" 
+            id="admin-pin-input" 
+            maxlength="8" 
+            placeholder="Enter PIN (Default: 1965)" 
+            class="w-full text-center tracking-[0.5em] text-2xl font-bold py-3.5 px-4 rounded-xl border-2 border-[#E8DECE] focus:border-[#1B365D] focus:outline-none bg-[#FAF6F0]"
+            autocomplete="current-password"
+            autofocus
+          />
+          <p id="pin-error-msg" class="text-xs text-red-600 font-semibold mt-2 hidden">
+            Incorrect PIN. Please try again.
+          </p>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full bg-[#1B365D] hover:bg-[#12243F] text-white py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider shadow-lg transition-all"
+        >
+          Unlock Admin Desk
+        </button>
+      </form>
+
+      <div class="mt-6 pt-4 border-t border-stone-200 text-[11px] text-stone-500 flex items-center justify-between">
+        <span>Default PIN: <strong>1965</strong></span>
+        <a href="index.html" class="text-[#1B365D] hover:underline font-semibold">← View Website</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       2. MAIN ADMIN DASHBOARD (Protected by PIN)
+       ========================================================================= -->
+  <div id="admin-dashboard" class="hidden min-h-screen flex flex-col justify-between">
+    
+    <!-- Top Sticky Admin Header -->
+    <header class="sticky top-0 z-40 bg-white border-b border-[#E8DECE] shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          
+          <!-- Brand / Portal Title -->
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-[#FAF6F0] p-1 border border-[#1B365D]">
+              <img src="assets/images/logo-symbol.svg" alt="Emblem" class="w-full h-full object-contain" />
+            </div>
+            <div>
+              <h1 class="font-serif-heading font-bold text-lg text-[#1B365D] leading-none">Chhipa Owner Desk</h1>
+              <span class="text-[10px] text-stone-500 font-medium tracking-wider uppercase">Zero-Cost Dynamic CMS</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex items-center gap-2.5">
+            <a 
+              href="index.html" 
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FAF6F0] hover:bg-stone-200 text-stone-800 text-xs font-semibold border border-[#E8DECE] transition-colors"
+            >
+              <span>← View Website</span>
+            </a>
+            
+            <button 
+              type="button" 
+              onclick="logoutAdmin()" 
+              class="px-3 py-1.5 rounded-lg bg-stone-100 hover:bg-red-50 text-stone-700 hover:text-red-700 text-xs font-semibold border border-stone-200 transition-colors"
+            >
+              Lock 🔒
+            </button>
+          </div>
+
+        </div>
+
+        <!-- 4 Management Navigation Tabs -->
+        <nav class="flex border-t border-[#E8DECE] overflow-x-auto no-scrollbar -mb-px">
+          <button 
+            type="button" 
+            onclick="switchTab('tab-products')" 
+            id="btn-tab-products" 
+            class="admin-tab-btn flex-1 min-w-[130px] py-3 text-center text-xs font-bold border-b-2 border-[#1B365D] text-[#1B365D]"
+          >
+            📦 Products & Stock
+          </button>
+          <button 
+            type="button" 
+            onclick="switchTab('tab-calculator')" 
+            id="btn-tab-calculator" 
+            class="admin-tab-btn flex-1 min-w-[150px] py-3 text-center text-xs font-bold border-b-2 border-transparent text-stone-500 hover:text-stone-800"
+          >
+            🧮 Calculator & Swatch
+          </button>
+          <button 
+            type="button" 
+            onclick="switchTab('tab-contact')" 
+            id="btn-tab-contact" 
+            class="admin-tab-btn flex-1 min-w-[140px] py-3 text-center text-xs font-bold border-b-2 border-transparent text-stone-500 hover:text-stone-800"
+          >
+            📱 Contact & WhatsApp
+          </button>
+          <button 
+            type="button" 
+            onclick="switchTab('tab-sync')" 
+            id="btn-tab-sync" 
+            class="admin-tab-btn flex-1 min-w-[140px] py-3 text-center text-xs font-bold border-b-2 border-transparent text-stone-500 hover:text-stone-800"
+          >
+            ☁️ Cloud Sync & Backup
+          </button>
+        </nav>
+
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-1">
+      
+      <!-- =======================================================================
+           TAB 1: PRODUCTS & STOCK MANAGEMENT
+           ======================================================================= -->
+      <div id="tab-products" class="admin-tab-content space-y-6">
+        
+        <!-- Header Actions & Stats -->
+        <div class="bg-white p-5 rounded-2xl border border-[#E8DECE] shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <h2 class="font-serif-heading text-xl font-bold text-[#1B365D]">Product Catalogue & Stock Control</h2>
+            <p class="text-xs text-stone-600 mt-0.5" id="products-stat-summary">
+              Loading products...
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2 w-full sm:w-auto">
+            <button 
+              type="button" 
+              onclick="openProductEditModal(null)" 
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#1B365D] hover:bg-[#12243F] text-white text-xs font-bold shadow-md transition-all"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+              </svg>
+              <span>Add New Product</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter & Search Toolbar in Admin -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 bg-white p-3 rounded-xl border border-[#E8DECE]">
+          <div class="flex items-center gap-2 w-full sm:w-auto overflow-x-auto">
+            <button type="button" onclick="filterAdminProducts('all')" class="admin-filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#1B365D] text-white">All</button>
+            <button type="button" onclick="filterAdminProducts('running-fabrics')" class="admin-filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#FAF6F0] text-stone-800 hover:bg-stone-200">Fabrics</button>
+            <button type="button" onclick="filterAdminProducts('apparel')" class="admin-filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#FAF6F0] text-stone-800 hover:bg-stone-200">Apparel</button>
+            <button type="button" onclick="filterAdminProducts('home-linen')" class="admin-filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#FAF6F0] text-stone-800 hover:bg-stone-200">Home Linen</button>
+            <button type="button" onclick="filterAdminProducts('out-of-stock')" class="admin-filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-red-50 text-red-700 hover:bg-red-100">Out of Stock</button>
+          </div>
+
+          <div class="relative w-full sm:w-64">
+            <input 
+              type="text" 
+              id="admin-search-input" 
+              placeholder="Search products..." 
+              oninput="renderAdminProductsList()" 
+              class="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg border border-[#E8DECE] bg-[#FAF6F0] focus:bg-white focus:outline-none"
+            />
+            <svg class="w-3.5 h-3.5 text-stone-400 absolute left-2.5 top-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Products List Cards -->
+        <div id="admin-products-container" class="space-y-3">
+          <!-- Rendered dynamically -->
+        </div>
+
+      </div>
+
+      <!-- =======================================================================
+           TAB 2: WHOLESALE CALCULATOR & SWATCH BOX
+           ======================================================================= -->
+      <div id="tab-calculator" class="admin-tab-content space-y-8 hidden">
+        
+        <!-- Fabric Base Rates Management -->
+        <div class="bg-white p-6 rounded-2xl border border-[#E8DECE] shadow-sm space-y-6">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-[#E8DECE]">
+            <div>
+              <h3 class="font-serif-heading text-xl font-bold text-[#1B365D]">Fabric Base Rates (Per Meter)</h3>
+              <p class="text-xs text-stone-600">These rates populate the B2B Wholesale Yardage Calculator on the live store.</p>
+            </div>
+            <button 
+              type="button" 
+              onclick="addNewFabricBaseRow()" 
+              class="px-3.5 py-2 rounded-lg bg-[#FAF6F0] hover:bg-stone-200 text-[#1B365D] font-bold text-xs border border-[#E8DECE] transition-colors"
+            >
+              ➕ Add Fabric Base
+            </button>
+          </div>
+
+          <div id="calc-fabrics-list" class="space-y-3">
+            <!-- Rendered dynamically -->
+          </div>
+
+          <div class="pt-3 flex justify-end">
+            <button 
+              type="button" 
+              onclick="saveCalculatorFabrics()" 
+              class="px-5 py-2.5 rounded-xl bg-[#1B365D] text-white font-bold text-xs hover:bg-[#12243F] shadow-sm transition-all"
+            >
+              Save Fabric Base Rates
+            </button>
+          </div>
+        </div>
+
+        <!-- Custom Print Surcharge & Discount Tiers -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          
+          <!-- Custom Print Surcharge -->
+          <div class="bg-white p-6 rounded-2xl border border-[#E8DECE] shadow-sm space-y-4">
+            <h3 class="font-serif-heading text-lg font-bold text-[#1B365D]">Custom Print Surcharge</h3>
+            <p class="text-xs text-stone-600">Extra per-meter fee applied when a buyer toggles "Custom Block / Pantone Matching".</p>
+            
+            <div class="pt-2">
+              <label class="block text-xs font-bold text-stone-700 mb-1">Surcharge Amount (₹ per meter)</label>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-bold text-stone-500">₹</span>
+                <input 
+                  type="number" 
+                  id="admin-calc-surcharge" 
+                  min="0" 
+                  step="1" 
+                  class="w-32 px-3 py-2 text-sm font-bold bg-[#FAF6F0] border border-[#E8DECE] rounded-lg"
+                />
+                <button 
+                  type="button" 
+                  onclick="saveCustomSurcharge()" 
+                  class="px-4 py-2 bg-[#1B365D] text-white font-bold text-xs rounded-lg hover:bg-[#12243F]"
+                >
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Swatch Box Banner Offer -->
+          <div class="bg-white p-6 rounded-2xl border border-[#E8DECE] shadow-sm space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="font-serif-heading text-lg font-bold text-[#1B365D]">Sanganer Swatch Box Offer</h3>
+                <p class="text-xs text-stone-600">Banner displayed beneath the collections lookbook.</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="admin-swatch-toggle" class="sr-only peer" onchange="toggleSwatchBannerActive(this.checked)">
+                <div class="w-11 h-6 bg-stone-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#1B365D]"></div>
+              </label>
+            </div>
+
+            <div class="space-y-3 pt-2">
+              <div>
+                <label class="block text-[11px] font-bold text-stone-700 mb-1">Offer Price (₹)</label>
+                <input type="number" id="admin-swatch-price" class="w-32 px-3 py-1.5 text-xs font-bold bg-[#FAF6F0] border border-[#E8DECE] rounded-lg" />
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-stone-700 mb-1">Banner Headline</label>
+                <input type="text" id="admin-swatch-title" class="w-full px-3 py-1.5 text-xs bg-[#FAF6F0] border border-[#E8DECE] rounded-lg" />
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-stone-700 mb-1">Description</label>
+                <textarea id="admin-swatch-desc" rows="2" class="w-full px-3 py-1.5 text-xs bg-[#FAF6F0] border border-[#E8DECE] rounded-lg"></textarea>
+              </div>
+              <button type="button" onclick="saveSwatchBannerSettings()" class="px-4 py-2 bg-[#1B365D] text-white font-bold text-xs rounded-lg hover:bg-[#12243F]">
+                Save Swatch Offer
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- =======================================================================
+           TAB 3: CONTACT, WHATSAPP & SOCIAL LINKS
+           ======================================================================= -->
+      <div id="tab-contact" class="admin-tab-content space-y-8 hidden">
+        
+        <!-- Business Contact Form -->
+        <div class="bg-white p-6 rounded-2xl border border-[#E8DECE] shadow-sm space-y-6">
+          <div class="pb-4 border-b border-[#E8DECE]">
+            <h3 class="font-serif-heading text-xl font-bold text-[#1B365D]">Workshop & Direct Contact Settings</h3>
+            <p class="text-xs text-stone-600">
+              Updating your WhatsApp number here will immediately update every single WhatsApp order and inquiry link across the entire store.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-stone-800 mb-1">
+                WhatsApp Phone Number (Country code + 10 digits without +)
+              </label>
+              <input 
+                type="text" 
+                id="biz-wa-number" 
+                class="w-full px-3 py-2 text-xs font-bold bg-[#FAF6F0] border border-[#E8DECE] rounded-lg focus:bg-white" 
+                placeholder="919024856205"
+              />
+              <span class="text-[10px] text-stone-500">Example: 919024856205</span>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-800 mb-1">Formatted Display Phone</label>
+              <input 
+                type="text" 
+                id="biz-display-phone" 
+                class="w-full px-3 py-2 text-xs font-bold bg-[#FAF6F0] border border-[#E8DECE] rounded-lg focus:bg-white" 
+                placeholder="+91 90248 56205"
+              />
+              <span class="text-[10px] text-stone-500">Shown in header and footer</span>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-800 mb-1">Operating Hours</label>
+              <input 
+                type="text" 
+                id="biz-hours" 
+                class="w-full px-3 py-2 text-xs bg-[#FAF6F0] border border-[#E8DECE] rounded-lg focus:bg-white" 
+                placeholder="Open Daily, 9:00 AM – 8:00 PM"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-800 mb-1">Top Announcement Bar Text</label>
+              <input 
+                type="text" 
+                id="biz-announcement" 
+                class="w-full px-3 py-2 text-xs bg-[#FAF6F0] border border-[#E8DECE] rounded-lg focus:bg-white" 
+              />
+            </div>
+
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-bold text-stone-800 mb-1">Workshop Physical Address</label>
+              <textarea 
+                id="biz-address" 
+                rows="2" 
+                class="w-full px-3 py-2 text-xs bg-[#FAF6F0] border border-[#E8DECE] rounded-lg focus:bg-white"
+              ></textarea>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-800 mb-1">Instagram URL</label>
+              <input 
+                type="text" 
+                id="biz-instagram" 
+                class="w-full px-3 py-2 text-xs bg-[#FAF6F0] border border-[#E8DECE] rounded-lg focus:bg-white" 
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-800 mb-1">Facebook URL</label>
+              <input 
+                type="text" 
+                id="biz-facebook" 
+                class="w-full px-3 py-2 text-xs bg-[#FAF6F0] border border-[#E8DECE] rounded-lg focus:bg-white" 
+              />
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-[#E8DECE] flex justify-end">
+            <button 
+              type="button" 
+              onclick="saveBusinessContactSettings()" 
+              class="px-6 py-2.5 rounded-xl bg-[#1B365D] text-white font-bold text-xs hover:bg-[#12243F] shadow-sm transition-all"
+            >
+              Save Contact Details
+            </button>
+          </div>
+        </div>
+
+        <!-- Security PIN Change -->
+        <div class="bg-white p-6 rounded-2xl border border-[#E8DECE] shadow-sm space-y-4">
+          <h3 class="font-serif-heading text-lg font-bold text-[#1B365D]">Change Owner Admin PIN</h3>
+          <p class="text-xs text-stone-600">Keep your workshop admin panel secure with a custom 4-digit PIN.</p>
+          
+          <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+            <input type="password" id="pin-change-current" placeholder="Current PIN" maxlength="8" class="w-full sm:w-40 px-3 py-2 text-xs bg-[#FAF6F0] border border-[#E8DECE] rounded-lg" />
+            <input type="password" id="pin-change-new" placeholder="New PIN" maxlength="8" class="w-full sm:w-40 px-3 py-2 text-xs bg-[#FAF6F0] border border-[#E8DECE] rounded-lg" />
+            <button type="button" onclick="handleChangePIN()" class="w-full sm:w-auto px-4 py-2 bg-[#B84A39] hover:bg-[#98382A] text-white font-bold text-xs rounded-lg transition-colors">
+              Update PIN
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- =======================================================================
+           TAB 4: GOOGLE SHEETS LIVE SYNC & BACKUP
+           ======================================================================= -->
+      <div id="tab-sync" class="admin-tab-content space-y-8 hidden">
+        
+        <!-- Google Sheets Cloud Sync Card -->
+        <div class="bg-white p-6 rounded-2xl border border-[#E8DECE] shadow-sm space-y-6">
+          <div class="pb-4 border-b border-[#E8DECE]">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <h3 class="font-serif-heading text-xl font-bold text-[#1B365D]">Live Google Sheets Cloud Sync</h3>
+            </div>
+            <p class="text-xs text-stone-600">
+              Connect a published Google Sheet CSV link. When you update prices or inventory on your phone via Google Sheets, changes automatically sync to your customers' browsers!
+            </p>
+          </div>
+
+          <!-- Link input and test button -->
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-stone-800 mb-1">
+                Published Google Sheet CSV Feed URL:
+              </label>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <input 
+                  type="url" 
+                  id="admin-sheet-url" 
+                  placeholder="https://docs.google.com/spreadsheets/d/.../pub?output=csv" 
+                  class="flex-1 px-3 py-2.5 text-xs bg-[#FAF6F0] border border-[#E8DECE] rounded-xl focus:bg-white focus:outline-none"
+                />
+                <button 
+                  type="button" 
+                  onclick="triggerGoogleSheetSync()" 
+                  id="sync-now-btn"
+                  class="px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl shadow-sm flex items-center justify-center gap-1.5 transition-colors"
+                >
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                  <span>Test & Sync Now</span>
+                </button>
+              </div>
+              <p id="sync-status-msg" class="text-xs mt-2 hidden"></p>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="admin-auto-sync" class="w-4 h-4 text-[#1B365D] rounded border-[#E8DECE]" />
+              <label for="admin-auto-sync" class="text-xs text-stone-700 font-medium cursor-pointer">
+                Automatically attempt Google Sheets sync whenever customers open the website
+              </label>
+            </div>
+          </div>
+
+          <!-- Tutorial Guide on How to publish sheet -->
+          <div class="p-4 rounded-xl bg-[#FAF6F0] border border-[#E8DECE] space-y-2 text-xs">
+            <span class="font-bold text-[#1B365D] block">How to publish a Google Sheet in 30 seconds:</span>
+            <p>1. Open your Google Sheet containing columns: <code>id, title, price, tag, instock, moq, image</code></p>
+            <p>2. Click <strong>File</strong> → <strong>Share</strong> → <strong>Publish to web</strong>.</p>
+            <p>3. Select <strong>Entire Document</strong> (or Sheet 1) and change "Web page" to <strong>Comma-separated values (.csv)</strong>.</p>
+            <p>4. Click <strong>Publish</strong>, copy the generated link, and paste it into the box above!</p>
+            <div class="pt-2">
+              <button type="button" onclick="copyCsvTemplateHeader()" class="px-3 py-1.5 rounded bg-white hover:bg-stone-200 border border-[#E8DECE] font-semibold text-stone-700 text-[11px]">
+                📋 Copy Sample CSV Header Format
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Local Backup & Factory Reset -->
+        <div class="bg-white p-6 rounded-2xl border border-[#E8DECE] shadow-sm space-y-4">
+          <h3 class="font-serif-heading text-lg font-bold text-[#1B365D]">Backup, Restore & Reset</h3>
+          <p class="text-xs text-stone-600">Download a full snapshot of your store settings or reset to factory defaults.</p>
+          
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <button 
+              type="button" 
+              onclick="downloadBackupJSON()" 
+              class="px-4 py-2.5 rounded-xl bg-[#1B365D] hover:bg-[#12243F] text-white text-xs font-bold flex items-center gap-1.5"
+            >
+              📥 Download Backup JSON
+            </button>
+
+            <label class="px-4 py-2.5 rounded-xl bg-[#FAF6F0] hover:bg-stone-200 text-stone-800 text-xs font-bold border border-[#E8DECE] cursor-pointer flex items-center gap-1.5">
+              📤 Restore from JSON File
+              <input type="file" id="json-file-input" accept=".json" class="hidden" onchange="handleRestoreJSONFile(this)" />
+            </label>
+
+            <button 
+              type="button" 
+              onclick="handleResetToDefault()" 
+              class="px-4 py-2.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-700 text-xs font-bold border border-red-200 transition-colors ml-auto"
+            >
+              🔄 Reset to Factory Defaults
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- Admin Footer -->
+    <footer class="bg-white border-t border-[#E8DECE] py-4 text-center text-xs text-stone-500">
+      Chhipa Handblock Printroom (Est. 1965) • Sanganer, Jaipur • Owner Admin Portal
+    </footer>
+
+  </div>
+
+  <!-- =========================================================================
+       3. PRODUCT EDIT / ADD MODAL
+       ========================================================================= -->
+  <div id="product-edit-modal" class="fixed inset-0 z-50 bg-black/60 hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 border border-[#E8DECE] shadow-2xl space-y-4 my-8">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-[#E8DECE]">
+        <h3 id="modal-form-heading" class="font-serif-heading text-xl font-bold text-[#1B365D]">Add New Product</h3>
+        <button type="button" onclick="closeProductEditModal()" class="text-stone-400 hover:text-stone-800 p-1">✕</button>
+      </div>
+
+      <form id="product-form" onsubmit="event.preventDefault(); handleSaveProduct();" class="space-y-3.5 text-xs">
+        <input type="hidden" id="edit-prod-id" />
+
+        <div>
+          <label class="block font-bold text-stone-800 mb-1">Product Title</label>
+          <input type="text" id="edit-prod-title" required class="w-full px-3 py-2 bg-[#FAF6F0] border border-[#E8DECE] rounded-lg focus:bg-white" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-stone-800 mb-1">Category</label>
+            <select id="edit-prod-category" class="w-full px-3 py-2 bg-[#FAF6F0] border border-[#E8DECE] rounded-lg">
+              <option value="running-fabrics">Running Fabrics (Bulk)</option>
+              <option value="apparel">Apparel & Suit Sets</option>
+              <option value="home-linen">Home Linen & Bags</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block font-bold text-stone-800 mb-1">Stock Status</label>
+            <select id="edit-prod-instock" class="w-full px-3 py-2 bg-[#FAF6F0] border border-[#E8DECE] rounded-lg font-bold">
+              <option value="true">✓ In Stock</option>
+              <option value="false">✕ Out of Stock</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block font-bold text-stone-800 mb-1">Price (₹)</label>
+            <input type="number" id="edit-prod-price" required min="1" class="w-full px-3 py-2 bg-[#FAF6F0] border border-[#E8DECE] rounded-lg font-bold" />
+          </div>
+
+          <div>
+            <label class="block font-bold text-stone-800 mb-1">Pricing Unit</label>
+            <select id="edit-prod-unit" class="w-full px-3 py-2 bg-[#FAF6F0] border border-[#E8DECE] rounded-lg">
+              <option value="/ meter">/ meter</option>
+              <option value="/ piece">/ piece</option>
+              <option value="/ saree">/ saree</option>
+              <option value="/ set (3-Piece)">/ set</option>
+              <option value="/ pair (2 pcs)">/ pair</option>
+              <option value="/ quilt">/ quilt</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block font-bold text-stone-800 mb-1">Min Order (MOQ)</label>
+            <input type="number" id="edit-prod-moq" min="1" value="1" class="w-full px-3 py-2 bg-[#FAF6F0] border border-[#E8DECE] rounded-lg" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-stone-800 mb-1">Badge Tag</label>
+          <input type="text" id="edit-prod-tag" placeholder="e.g. Bestseller, Ready to Wear, Best for Boutiques" class="w-full px-3 py-2 bg-[#FAF6F0] border border-[#E8DECE] rounded-lg" />
+        </div>
+
+        <div>
+          <label class="block font-bold text-stone-800 mb-1">Fabric Subtitle</label>
+          <input type="text" id="edit-prod-subtitle" placeholder="e.g. 100% Pure Cambric 60s" class="w-full px-3 py-2 bg-[#FAF6F0] border border-[#E8DECE] rounded-lg" />
+        </div>
+
+        <!-- Image URL with Live Thumbnail Preview -->
+        <div>
+          <label class="block font-bold text-stone-800 mb-1">Image URL</label>
+          <div class="flex items-center gap-3">
+            <input 
+              type="url" 
+              id="edit-prod-image" 
+              required 
+              placeholder="https://..." 
+              oninput="updateImagePreview(this.value)" 
+              class="flex-1 px-3 py-2 bg-[#FAF6F0] border border-[#E8DECE] rounded-lg focus:bg-white" 
+            />
+            <div class="w-12 h-12 rounded-lg bg-stone-100 border border-[#E8DECE] overflow-hidden flex-shrink-0">
+              <img id="edit-img-preview" src="" alt="Preview" class="w-full h-full object-cover" onerror="this.src='assets/images/logo-symbol.svg'" />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-stone-800 mb-1">Description</label>
+          <textarea id="edit-prod-desc" rows="3" class="w-full px-3 py-2 bg-[#FAF6F0] border border-[#E8DECE] rounded-lg focus:bg-white"></textarea>
+        </div>
+
+        <div class="pt-3 border-t border-[#E8DECE] flex justify-end gap-2">
+          <button type="button" onclick="closeProductEditModal()" class="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold rounded-lg">Cancel</button>
+          <button type="submit" class="px-5 py-2 bg-[#1B365D] hover:bg-[#12243F] text-white font-bold rounded-lg shadow-sm">Save Product</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/store-config.js"></script>
+  <script>
+    // Admin Local State
+    let adminFilterCategory = 'all';
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      await ChhipaStore.init();
+
+      // Check if session is already authenticated
+      if (sessionStorage.getItem("CHHIPA_ADMIN_AUTH") === "true") {
+        showDashboard();
+      } else {
+        document.getElementById("pin-lock-screen").classList.remove("hidden");
+        document.getElementById("admin-pin-input").focus();
+      }
+    });
+
+    function handlePinSubmit() {
+      const pinInput = document.getElementById("admin-pin-input");
+      const errorMsg = document.getElementById("pin-error-msg");
+      const pin = pinInput.value.trim();
+
+      if (ChhipaStore.verifyPIN(pin)) {
+        sessionStorage.setItem("CHHIPA_ADMIN_AUTH", "true");
+        showDashboard();
+        errorMsg.classList.add("hidden");
+        pinInput.value = "";
+      } else {
+        errorMsg.classList.remove("hidden");
+        pinInput.classList.add("border-red-500", "animate-pulse");
+        setTimeout(() => pinInput.classList.remove("border-red-500", "animate-pulse"), 1000);
+      }
+    }
+
+    function showDashboard() {
+      document.getElementById("pin-lock-screen").classList.add("hidden");
+      document.getElementById("admin-dashboard").classList.remove("hidden");
+      loadAllAdminData();
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem("CHHIPA_ADMIN_AUTH");
+      document.getElementById("admin-dashboard").classList.add("hidden");
+      document.getElementById("pin-lock-screen").classList.remove("hidden");
+      document.getElementById("admin-pin-input").focus();
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll(".admin-tab-content").forEach(el => el.classList.add("hidden"));
+      document.querySelectorAll(".admin-tab-btn").forEach(btn => {
+        btn.classList.remove("border-[#1B365D]", "text-[#1B365D]");
+        btn.classList.add("border-transparent", "text-stone-500");
+      });
+
+      const target = document.getElementById(tabId);
+      if (target) target.classList.remove("hidden");
+
+      const activeBtn = document.getElementById(`btn-${tabId}`);
+      if (activeBtn) {
+        activeBtn.classList.remove("border-transparent", "text-stone-500");
+        activeBtn.classList.add("border-[#1B365D]", "text-[#1B365D]");
+      }
+    }
+
+    function loadAllAdminData() {
+      const data = ChhipaStore.get();
+      renderAdminProductsList();
+      loadCalculatorData(data);
+      loadContactData(data.business);
+      loadCloudSyncData(data.cloudSync);
+    }
+
+    /* -------------------------------------------------------------------------
+       TAB 1: PRODUCTS LOGIC
+       ------------------------------------------------------------------------- */
+
+    function filterAdminProducts(cat) {
+      adminFilterCategory = cat;
+      document.querySelectorAll(".admin-filter-pill").forEach(p => {
+        p.classList.remove("bg-[#1B365D]", "text-white");
+        p.classList.add("bg-[#FAF6F0]", "text-stone-800");
+      });
+      event.target.classList.remove("bg-[#FAF6F0]", "text-stone-800");
+      event.target.classList.add("bg-[#1B365D]", "text-white");
+      renderAdminProductsList();
+    }
+
+    function renderAdminProductsList() {
+      const container = document.getElementById("admin-products-container");
+      const search = (document.getElementById("admin-search-input")?.value || "").toLowerCase().trim();
+      const products = ChhipaStore.get().products;
+
+      const filtered = products.filter(item => {
+        let matchesCat = true;
+        if (adminFilterCategory === 'out-of-stock') {
+          matchesCat = item.inStock === false || (item.tag && item.tag.toLowerCase().includes("out of stock"));
+        } else if (adminFilterCategory !== 'all') {
+          matchesCat = item.category === adminFilterCategory;
+        }
+
+        const matchesSearch = !search || 
+          item.title.toLowerCase().includes(search) || 
+          (item.tag && item.tag.toLowerCase().includes(search));
+
+        return matchesCat && matchesSearch;
+      });
+
+      // Update stat summary
+      const total = products.length;
+      const inStockCount = products.filter(p => p.inStock !== false && (!p.tag || !p.tag.toLowerCase().includes("out of stock"))).length;
+      const outOfStockCount = total - inStockCount;
+      document.getElementById("products-stat-summary").innerText = 
+        `Total: ${total} items • In Stock: ${inStockCount} • Out of Stock: ${outOfStockCount}`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 text-center bg-white rounded-xl border border-[#E8DECE]">
+            <p class="text-stone-500 text-xs">No products found matching filters.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => {
+        const isOut = item.inStock === false || (item.tag && item.tag.toLowerCase().includes("out of stock"));
+        return `
+          <div class="bg-white p-4 rounded-xl border border-[#E8DECE] shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            
+            <div class="flex items-center gap-3.5 flex-1">
+              <img 
+                src="${item.image}" 
+                alt="${item.title}" 
+                class="w-16 h-16 rounded-lg object-cover bg-stone-100 flex-shrink-0"
+                onerror="this.src='assets/images/logo-symbol.svg'"
+              />
+              <div class="min-w-0">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${isOut ? 'bg-red-100 text-red-800' : 'bg-stone-100 text-stone-700'}">
+                    ${isOut ? 'Out of Stock' : (item.tag || item.category)}
+                  </span>
+                  <span class="text-xs text-stone-400 font-mono">ID: ${item.id}</span>
+                </div>
+                <h4 class="font-bold text-sm text-stone-900 truncate">${item.title}</h4>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <span class="font-bold text-sm text-[#1B365D]">₹${item.price}</span>
+                  <span class="text-xs text-stone-500">${item.priceUnit || '/ piece'}</span>
+                  <span class="text-stone-300">•</span>
+                  <span class="text-xs text-stone-500">MOQ: ${item.minOrder || 1}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto pt-3 sm:pt-0 border-t sm:border-t-0 border-[#F3ECE1]">
+              <!-- In Stock Switch -->
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input 
+                  type="checkbox" 
+                  ${!isOut ? 'checked' : ''} 
+                  onchange="toggleProductStock('${item.id}', this.checked)" 
+                  class="sr-only peer"
+                />
+                <div class="w-9 h-5 bg-stone-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600"></div>
+                <span class="text-xs font-semibold ${!isOut ? 'text-emerald-700' : 'text-stone-500'}">
+                  ${!isOut ? 'In Stock' : 'Out of Stock'}
+                </span>
+              </label>
+
+              <!-- Edit & Delete Buttons -->
+              <div class="flex items-center gap-1.5 ml-2">
+                <button 
+                  type="button" 
+                  onclick="openProductEditModal('${item.id}')" 
+                  class="p-2 text-stone-600 hover:text-[#1B365D] hover:bg-stone-100 rounded-lg text-xs font-semibold"
+                  title="Edit Product"
+                >
+                  ✏️ Edit
+                </button>
+                <button 
+                  type="button" 
+                  onclick="deleteProduct('${item.id}')" 
+                  class="p-2 text-stone-400 hover:text-red-600 hover:bg-red-50 rounded-lg text-xs"
+                  title="Delete Product"
+                >
+                  🗑️
+                </button>
+              </div>
+            </div>
+
+          </div>
+        `;
+      }).join("");
+    }
+
+    function toggleProductStock(prodId, isInStock) {
+      const data = ChhipaStore.get();
+      const product = data.products.find(p => p.id === prodId);
+      if (product) {
+        product.inStock = isInStock;
+        if (!isInStock) {
+          product.tag = "Out of Stock";
+        } else if (product.tag === "Out of Stock") {
+          product.tag = product.category === 'running-fabrics' ? "Best for Boutiques | MOQ 20m" : "Ready to Wear";
+        }
+        ChhipaStore.save(data);
+        renderAdminProductsList();
+        showAdminToast(`Updated stock status for ${product.title}`);
+      }
+    }
+
+    function openProductEditModal(prodId) {
+      const modal = document.getElementById("product-edit-modal");
+      const data = ChhipaStore.get();
+      const heading = document.getElementById("modal-form-heading");
+
+      if (prodId) {
+        const item = data.products.find(p => p.id === prodId);
+        if (!item) return;
+        heading.innerText = `Edit: ${item.title}`;
+        document.getElementById("edit-prod-id").value = item.id;
+        document.getElementById("edit-prod-title").value = item.title;
+        document.getElementById("edit-prod-category").value = item.category;
+        document.getElementById("edit-prod-instock").value = item.inStock === false ? 'false' : 'true';
+        document.getElementById("edit-prod-price").value = item.price;
+        document.getElementById("edit-prod-unit").value = item.priceUnit || '/ piece';
+        document.getElementById("edit-prod-moq").value = item.minOrder || 1;
+        document.getElementById("edit-prod-tag").value = item.tag || '';
+        document.getElementById("edit-prod-subtitle").value = item.fabricSubtitle || '';
+        document.getElementById("edit-prod-image").value = item.image || '';
+        document.getElementById("edit-prod-desc").value = item.description || '';
+        updateImagePreview(item.image);
+      } else {
+        heading.innerText = "Add New Textile Product";
+        document.getElementById("edit-prod-id").value = "";
+        document.getElementById("edit-prod-title").value = "";
+        document.getElementById("edit-prod-category").value = "running-fabrics";
+        document.getElementById("edit-prod-instock").value = "true";
+        document.getElementById("edit-prod-price").value = "120";
+        document.getElementById("edit-prod-unit").value = "/ meter";
+        document.getElementById("edit-prod-moq").value = "20";
+        document.getElementById("edit-prod-tag").value = "New Arrival";
+        document.getElementById("edit-prod-subtitle").value = "100% Pure Cotton";
+        document.getElementById("edit-prod-image").value = "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=80";
+        document.getElementById("edit-prod-desc").value = "";
+        updateImagePreview("https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=80");
+      }
+
+      modal.classList.remove("hidden");
+    }
+
+    function closeProductEditModal() {
+      document.getElementById("product-edit-modal").classList.add("hidden");
+    }
+
+    function updateImagePreview(url) {
+      const img = document.getElementById("edit-img-preview");
+      if (img && url) img.src = url;
+    }
+
+    function handleSaveProduct() {
+      const data = ChhipaStore.get();
+      const id = document.getElementById("edit-prod-id").value;
+      const title = document.getElementById("edit-prod-title").value.trim();
+      const category = document.getElementById("edit-prod-category").value;
+      const inStock = document.getElementById("edit-prod-instock").value === 'true';
+      const price = parseFloat(document.getElementById("edit-prod-price").value) || 120;
+      const priceUnit = document.getElementById("edit-prod-unit").value;
+      const minOrder = parseInt(document.getElementById("edit-prod-moq").value) || 1;
+      const tag = document.getElementById("edit-prod-tag").value.trim();
+      const subtitle = document.getElementById("edit-prod-subtitle").value.trim();
+      const image = document.getElementById("edit-prod-image").value.trim();
+      const desc = document.getElementById("edit-prod-desc").value.trim();
+
+      const isUnitMeter = priceUnit.includes("meter");
+
+      if (id) {
+        // Update existing product
+        const item = data.products.find(p => p.id === id);
+        if (item) {
+          item.title = title;
+          item.category = category;
+          item.inStock = inStock;
+          item.price = price;
+          item.priceUnit = priceUnit;
+          item.minOrder = minOrder;
+          item.isUnitMeter = isUnitMeter;
+          item.tag = tag;
+          item.fabricSubtitle = subtitle;
+          item.image = image;
+          item.description = desc;
+        }
+      } else {
+        // Create new product
+        const newId = "prod-" + Date.now();
+        data.products.unshift({
+          id: newId,
+          title: title,
+          category: category,
+          inStock: inStock,
+          price: price,
+          priceUnit: priceUnit,
+          minOrder: minOrder,
+          isUnitMeter: isUnitMeter,
+          defaultQty: minOrder,
+          step: isUnitMeter ? 5 : 1,
+          tag: tag,
+          fabricSubtitle: subtitle,
+          image: image,
+          badgeColor: "bg-[#1B365D] text-white",
+          specs: {
+            fabric: subtitle,
+            technique: "Hand Block Printing",
+            moq: `${minOrder} ${isUnitMeter ? 'meters' : 'pcs'}`
+          },
+          description: desc
+        });
+      }
+
+      ChhipaStore.save(data);
+      closeProductEditModal();
+      renderAdminProductsList();
+      showAdminToast("Product successfully saved!");
+    }
+
+    function deleteProduct(prodId) {
+      const data = ChhipaStore.get();
+      const product = data.products.find(p => p.id === prodId);
+      if (!product) return;
+
+      if (confirm(`Are you sure you want to delete "${product.title}"?`)) {
+        data.products = data.products.filter(p => p.id !== prodId);
+        ChhipaStore.save(data);
+        renderAdminProductsList();
+        showAdminToast("Product deleted.");
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       TAB 2: CALCULATOR & SWATCH LOGIC
+       ------------------------------------------------------------------------- */
+
+    function loadCalculatorData(data) {
+      const calc = data.wholesaleCalculator;
+      const listContainer = document.getElementById("calc-fabrics-list");
+      if (!listContainer || !calc) return;
+
+      listContainer.innerHTML = calc.fabrics.map((f, idx) => `
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 p-3 rounded-xl bg-[#FAF6F0] border border-[#E8DECE] items-center text-xs">
+          <div class="sm:col-span-5">
+            <span class="text-[10px] text-stone-500 font-semibold block mb-0.5">Fabric Quality Name</span>
+            <input type="text" data-fabric-idx="${idx}" data-field="name" value="${f.name}" class="w-full px-2.5 py-1.5 font-bold bg-white border border-[#E8DECE] rounded-lg" />
+          </div>
+          <div class="sm:col-span-3">
+            <span class="text-[10px] text-stone-500 font-semibold block mb-0.5">Base Rate (₹/m)</span>
+            <input type="number" data-fabric-idx="${idx}" data-field="baseRate" value="${f.baseRate}" class="w-full px-2.5 py-1.5 font-bold text-[#1B365D] bg-white border border-[#E8DECE] rounded-lg" />
+          </div>
+          <div class="sm:col-span-3">
+            <span class="text-[10px] text-stone-500 font-semibold block mb-0.5">Subtitle</span>
+            <input type="text" data-fabric-idx="${idx}" data-field="subtitle" value="${f.subtitle || ''}" class="w-full px-2.5 py-1.5 bg-white border border-[#E8DECE] rounded-lg" />
+          </div>
+          <div class="sm:col-span-1 text-right pt-2 sm:pt-0">
+            <button type="button" onclick="deleteFabricBaseRow(${idx})" class="text-stone-400 hover:text-red-600 text-xs p-1" title="Delete Fabric">🗑️</button>
+          </div>
+        </div>
+      `).join("");
+
+      // Surcharge
+      document.getElementById("admin-calc-surcharge").value = calc.customSurcharge || 15;
+
+      // Swatch Banner
+      const swatch = data.swatchBanner || {};
+      document.getElementById("admin-swatch-toggle").checked = swatch.show !== false;
+      document.getElementById("admin-swatch-price").value = swatch.price || 499;
+      document.getElementById("admin-swatch-title").value = swatch.title || "";
+      document.getElementById("admin-swatch-desc").value = swatch.description || "";
+    }
+
+    function addNewFabricBaseRow() {
+      const data = ChhipaStore.get();
+      data.wholesaleCalculator.fabrics.push({
+        id: "fabric-" + Date.now(),
+        name: "New Fabric Quality",
+        baseRate: 150,
+        gsm: 90,
+        weightPerM: 0.12,
+        subtitle: "Cotton Weave"
+      });
+      ChhipaStore.save(data);
+      loadCalculatorData(data);
+    }
+
+    function deleteFabricBaseRow(idx) {
+      const data = ChhipaStore.get();
+      if (data.wholesaleCalculator.fabrics.length <= 1) {
+        alert("Must maintain at least one fabric base quality.");
+        return;
+      }
+      data.wholesaleCalculator.fabrics.splice(idx, 1);
+      ChhipaStore.save(data);
+      loadCalculatorData(data);
+    }
+
+    function saveCalculatorFabrics() {
+      const data = ChhipaStore.get();
+      const inputs = document.querySelectorAll("#calc-fabrics-list input");
+
+      inputs.forEach(input => {
+        const idx = parseInt(input.getAttribute("data-fabric-idx"));
+        const field = input.getAttribute("data-field");
+        if (data.wholesaleCalculator.fabrics[idx]) {
+          if (field === 'baseRate') {
+            data.wholesaleCalculator.fabrics[idx][field] = parseFloat(input.value) || 120;
+          } else {
+            data.wholesaleCalculator.fabrics[idx][field] = input.value.trim();
+          }
+        }
+      });
+
+      ChhipaStore.save(data);
+      showAdminToast("Fabric base rates updated!");
+    }
+
+    function saveCustomSurcharge() {
+      const data = ChhipaStore.get();
+      const val = parseFloat(document.getElementById("admin-calc-surcharge").value) || 15;
+      data.wholesaleCalculator.customSurcharge = val;
+      ChhipaStore.save(data);
+      showAdminToast("Custom print surcharge updated!");
+    }
+
+    function toggleSwatchBannerActive(isActive) {
+      const data = ChhipaStore.get();
+      if (!data.swatchBanner) data.swatchBanner = {};
+      data.swatchBanner.show = isActive;
+      ChhipaStore.save(data);
+      showAdminToast(`Swatch banner ${isActive ? 'enabled' : 'disabled'}`);
+    }
+
+    function saveSwatchBannerSettings() {
+      const data = ChhipaStore.get();
+      if (!data.swatchBanner) data.swatchBanner = {};
+      data.swatchBanner.price = parseFloat(document.getElementById("admin-swatch-price").value) || 499;
+      data.swatchBanner.title = document.getElementById("admin-swatch-title").value.trim();
+      data.swatchBanner.description = document.getElementById("admin-swatch-desc").value.trim();
+      data.swatchBanner.ctaText = `Request Swatch Box (₹${data.swatchBanner.price})`;
+      ChhipaStore.save(data);
+      showAdminToast("Swatch box banner settings saved!");
+    }
+
+    /* -------------------------------------------------------------------------
+       TAB 3: CONTACT & WHATSAPP LOGIC
+       ------------------------------------------------------------------------- */
+
+    function loadContactData(biz) {
+      if (!biz) return;
+      document.getElementById("biz-wa-number").value = biz.whatsappNumber || "919024856205";
+      document.getElementById("biz-display-phone").value = biz.displayPhone || "+91 90248 56205";
+      document.getElementById("biz-hours").value = biz.hours || "Open Daily, 9:00 AM – 8:00 PM";
+      document.getElementById("biz-announcement").value = biz.announcement || "";
+      document.getElementById("biz-address").value = biz.address || "";
+      document.getElementById("biz-instagram").value = biz.instagram || "";
+      document.getElementById("biz-facebook").value = biz.facebook || "";
+    }
+
+    function saveBusinessContactSettings() {
+      const data = ChhipaStore.get();
+      data.business.whatsappNumber = document.getElementById("biz-wa-number").value.trim().replace(/[^0-9]/g, '');
+      data.business.displayPhone = document.getElementById("biz-display-phone").value.trim();
+      data.business.hours = document.getElementById("biz-hours").value.trim();
+      data.business.announcement = document.getElementById("biz-announcement").value.trim();
+      data.business.address = document.getElementById("biz-address").value.trim();
+      data.business.instagram = document.getElementById("biz-instagram").value.trim();
+      data.business.facebook = document.getElementById("biz-facebook").value.trim();
+
+      ChhipaStore.save(data);
+      showAdminToast("Contact & WhatsApp settings updated across whole site!");
+    }
+
+    function handleChangePIN() {
+      const cur = document.getElementById("pin-change-current").value;
+      const nxt = document.getElementById("pin-change-new").value;
+      const res = ChhipaStore.changePIN(cur, nxt);
+      if (res.success) {
+        showAdminToast("Security PIN updated!");
+        document.getElementById("pin-change-current").value = "";
+        document.getElementById("pin-change-new").value = "";
+      } else {
+        alert(res.message);
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       TAB 4: GOOGLE SHEETS LIVE SYNC & BACKUP LOGIC
+       ------------------------------------------------------------------------- */
+
+    function loadCloudSyncData(sync) {
+      if (!sync) return;
+      document.getElementById("admin-sheet-url").value = sync.googleSheetCsvUrl || "";
+      document.getElementById("admin-auto-sync").checked = sync.autoSyncOnLoad !== false;
+
+      const statusEl = document.getElementById("sync-status-msg");
+      if (sync.lastSyncedAt) {
+        statusEl.className = "text-xs mt-2 text-emerald-700 font-semibold block";
+        statusEl.innerText = `✓ Last synced: ${new Date(sync.lastSyncedAt).toLocaleString()}`;
+      }
+    }
+
+    async function triggerGoogleSheetSync() {
+      const url = document.getElementById("admin-sheet-url").value.trim();
+      const statusEl = document.getElementById("sync-status-msg");
+      const btn = document.getElementById("sync-now-btn");
+
+      if (!url) {
+        alert("Please paste your Published Google Sheet CSV URL.");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerText = "Syncing...";
+      statusEl.className = "text-xs mt-2 text-stone-500 font-medium block";
+      statusEl.innerText = "Connecting to Google Sheets CSV feed...";
+
+      try {
+        const result = await ChhipaStore.syncGoogleSheet(url);
+        statusEl.className = "text-xs mt-2 text-emerald-700 font-bold block";
+        statusEl.innerText = `✓ Success! Synced ${result.updatedProducts} products from ${result.totalRows} sheet rows at ${new Date(result.syncedAt).toLocaleTimeString()}`;
+        renderAdminProductsList();
+        showAdminToast("Google Sheets sync completed!");
+      } catch (err) {
+        statusEl.className = "text-xs mt-2 text-red-600 font-bold block";
+        statusEl.innerText = `✕ Sync failed: ${err.message}. Make sure the sheet is published as CSV and accessible.`;
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          <span>Test & Sync Now</span>
+        `;
+      }
+    }
+
+    function copyCsvTemplateHeader() {
+      const headerStr = "id,title,category,price,priceUnit,minOrder,tag,inStock,image,description";
+      navigator.clipboard.writeText(headerStr).then(() => {
+        showAdminToast("CSV header template copied to clipboard!");
+      });
+    }
+
+    function downloadBackupJSON() {
+      ChhipaStore.exportJSON();
+      showAdminToast("Backup JSON file downloaded!");
+    }
+
+    function handleRestoreJSONFile(input) {
+      const file = input.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          ChhipaStore.importJSON(e.target.result);
+          loadAllAdminData();
+          showAdminToast("Store data restored successfully!");
+        } catch (err) {
+          alert("Invalid backup file: " + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function handleResetToDefault() {
+      if (confirm("Reset all products, rates, and contacts back to factory 1965 defaults? This cannot be undone.")) {
+        ChhipaStore.reset();
+        loadAllAdminData();
+        showAdminToast("Reset to factory defaults complete.");
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       ADMIN TOAST NOTIFICATION
+       ------------------------------------------------------------------------- */
+    function showAdminToast(msg) {
+      let toast = document.getElementById("admin-toast");
+      if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "admin-toast";
+        toast.className = "fixed bottom-6 right-6 z-50 bg-[#1B365D] text-white px-5 py-3 rounded-xl shadow-2xl text-xs font-semibold flex items-center gap-2 transition-all duration-300 pointer-events-none opacity-0";
+        document.body.appendChild(toast);
+      }
+      toast.innerHTML = `
+        <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <span>${msg}</span>
+      `;
+      toast.classList.remove("opacity-0", "translate-y-2");
+      toast.classList.add("opacity-100", "translate-y-0");
+
+      setTimeout(() => {
+        toast.classList.remove("opacity-100", "translate-y-0");
+        toast.classList.add("opacity-0", "translate-y-2");
+      }, 2600);
+    }
+  </script>
+</body>
+</html>

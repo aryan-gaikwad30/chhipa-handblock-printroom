@@ -1,13 +1,14 @@
 # Chhipa Handblock Printroom (Est. 1965)
-### Heritage Sanganeri Hand Block Print Manufacturer & Wholesaler Lookbook Website
+### Heritage Sanganeri Hand Block Print Manufacturer & Wholesaler
+**Zero-Cost Dynamic CMS & B2B Lookbook Platform**
 
-A production-ready, mobile-first B2B & Retail E-Commerce Lookbook website for **Chhipa Handblock Printroom** in Sanganer, Jaipur, Rajasthan.
+A production-ready, mobile-first B2B & Retail E-Commerce Lookbook website for **Chhipa Handblock Printroom** (Sanganer, Jaipur, Rajasthan).
 
-Designed with a rich Rajasthani editorial luxury aesthetic: warm unbleached cotton/ivory background (`#FAF6F0`), deep natural indigo (`#1B365D`), madder terracotta red (`#B84A39`), and charcoal ink typography (`#1E1E1E`).
+Designed with an authentic Rajasthani heritage luxury aesthetic: warm unbleached cotton background (`#FAF6F0`), deep natural indigo (`#1B365D`), madder terracotta red (`#B84A39`), and charcoal ink typography (`#1E1E1E`).
 
 ---
 
-## 🏛️ Business Details (Hardcoded)
+## 🏛️ Business Details (Dynamic & Centralized)
 
 - **Brand Name**: Chhipa Handblock Printroom
 - **Tagline**: Hand Block Printroom Since 1965 — Living Legacy of Pioneers in Sanganeri Hand Block Printing
@@ -19,80 +20,91 @@ Designed with a rich Rajasthani editorial luxury aesthetic: warm unbleached cott
 
 ---
 
-## 🌟 Key Features Built
+## ⚡ Zero-Cost CMS Architecture (`store-config.js`)
 
-1. **Sticky Navigation & Heritage Hero**:
-   - Announcement banner with operating hours, workshop walk-in invitation, and direct click-to-call link.
-   - Dual Call-to-Actions: *Explore Fabric & Apparel Catalogue* & *Request Bulk Wholesale Quote*.
-   - 4 Authentic Pillars: 100% Natural Dyes, Teak Wood Blocks, Pan-India & Global Export, Direct Manufacturer Pricing.
+100% of the site's data, products, prices, wholesale rates, testimonials, and contact links are dynamic. The workshop owner can manage everything directly from their mobile phone without touching code or paying monthly database fees.
 
-2. **Interactive Product & Fabric Catalogue**:
-   - Filter tabs: **All**, **Running Fabrics (Bulk)**, **Apparel & Suit Sets**, **Home Linen & Bags**.
-   - Real-time client-side search across fabrics, titles, and descriptions.
-   - Pre-populated products with exact specified items:
-     - *Sanganeri Hand Block Print 60x60 Cotton Fabric* — ₹120 / meter (MOQ 20m)
-     - *Hand Block Printed Waffle Cotton Kurti / Dress* — ₹750
-     - *Hand Block Printed Cotton Saree (Indigo & Black)* — ₹800
-     - *Maternity & Feeding Hand Block Gown* — ₹450
-     - *Floral Sanganeri Table Cover / Single Bed Sheet* — ₹500
-     - *Handmade Quilted Floral Tote Bag* — ₹450
-     - Plus authentic Dabu mud-resist, Chanderi suits, Kimono robes, and Jaipuri quilts.
-   - Dynamic quantity steppers on every card.
-   - **Smart "Order / Inquire via WhatsApp" Button**: Formats direct WhatsApp link with product title, quantity, and price.
-   - **Quick View Modal**: Displays fabric specifications (GSM, width, dyes, weave, care guide) with instant WhatsApp ordering.
-
-3. **Interactive B2B Wholesale Yardage & Price Calculator**:
-   - Built specifically for boutique owners, fashion designers, and export buyers.
-   - Synchronized quantity slider & numeric input (20m to 2,000m+).
-   - Fabric base selector: 60x60 Cambric, Mulmul Cotton, Chanderi Silk Blend, Dabu Indigo, Heavy Sheeting.
-   - Custom block / Pantone color-matching mode (+₹15/m).
-   - Automated tiered volume discounts:
-     - 100m – 499m: **5% Off**
-     - 500m – 999m: **12% Off**
-     - 1,000m+: **18% Off**
-   - High-contrast **"Send This Wholesale Quote to WhatsApp"** button that encodes the full quote details directly into WhatsApp.
-   - One-click **"Copy Quote Summary"** with toast notification.
-
-4. **The Sanganer Craft Story ("Since 1965")**:
-   - 3-step visual narrative:
-     - 01. Teak Wood Block Carving (*Rekh* & *Datta* blocks)
-     - 02. Natural & Rapid Dye Preparation (Fermented indigo vats & Harda treatment)
-     - 03. Hand Stamping & Sun Curing in Sanganer
-
-5. **Floating Smart WhatsApp Assistant Widget (Zero Monthly API Cost)**:
-   - Fixed bottom-right widget with pulsating ring and online status indicator.
-   - Mini popup card with 4 instant quick chips:
-     - 📦 *Get Bulk Wholesale Fabric Rates*
-     - 🎨 *Request Latest PDF Design Catalogue*
-     - 👗 *Order Retail Suit Sets / Sarees*
-     - 📍 *Workshop Visit & Directions (Sanganer)*
-   - Custom inquiry text box with one-click send.
-
-6. **Location, Interactive Google Maps & Footer**:
-   - Embedded Google Map centered on Sanganer, Dinesh Colony, Jaipur.
-   - "Get Directions" button linking straight to Google Maps navigation.
-   - Native social media links, workshop hours, and copyright.
+### 3-Tier Priority Fallback System:
+1. **Tier 1: Live Google Sheet Cloud Sync (CSV Feed)**:
+   - The owner can link a Published Google Sheet CSV.
+   - Updating prices or stock in Google Sheets from a smartphone automatically reflects across customer devices on load.
+2. **Tier 2: Browser `localStorage` Overrides**:
+   - Edits made via the built-in Owner Admin Panel (`admin.html`) persist instantly in the browser.
+3. **Tier 3: Default Fallback Data**:
+   - Complete, realistic 1965 heritage catalog (12 products, calculator rates, workshop info) so the site never shows a blank screen or breaks.
 
 ---
 
-## 🚀 Quick Deployment Guide
+## 🔒 Built-In Owner Admin Dashboard (`admin.html`)
 
-This site is built with pure semantic HTML5, modern Tailwind CSS via CDN, and vanilla JavaScript. There are **zero build steps or compilation requirements**.
+Access the admin dashboard at `admin.html` (or via the **🔒 Owner Desk** link in the footer).
 
-### Deploy to Vercel:
-```bash
-# Using Vercel CLI
-npx vercel --prod
+- **Security PIN Lock**: Default PIN is `1965` (can be updated inside the panel).
+- **Tab 1 — Products & Stock**:
+  - Live stock summary (In Stock vs. Out of Stock).
+  - One-click In Stock / Out of Stock toggle switches.
+  - Add new products or edit existing prices, MOQs, units, and descriptions.
+  - Live thumbnail image preview while typing image URLs.
+  - Delete items with confirmation.
+- **Tab 2 — Wholesale Calculator & Swatch Box**:
+  - Edit per-meter fabric base rates (Cambric, Mulmul, Chanderi, Dabu, Heavy Sheeting) or add new fabric qualities.
+  - Set custom printing surcharge (+₹15/m default).
+  - Configure tiered volume discount rules (100m+ -> 5%, 500m+ -> 12%, 1,000m+ -> 18%).
+  - Toggle the ₹499 Swatch Box offer banner on or off and edit its copy.
+- **Tab 3 — Contact, WhatsApp & Social Links**:
+  - Update the WhatsApp receiving phone number (automatically updates every `wa.me` order link and click-to-call link across the entire store).
+  - Update operating hours, physical address, and Instagram/Facebook links.
+  - Edit or add buyer testimonials.
+  - Change the 4-digit security PIN.
+- **Tab 4 — Google Sheets Live Sync & Backup**:
+  - Paste a Published Google Sheet CSV URL and click "Test & Sync Now".
+  - One-click "Copy Sample CSV Header Template" button.
+  - "Download Backup JSON" to keep offline file backups.
+  - "Restore from JSON File" to restore past snapshots.
+  - "Reset to Factory Defaults" to reload original 1965 data.
+
+---
+
+## 🛍️ Collections Lookbook & Out-of-Stock Handling
+
+All 12 authentic textile products are dynamically rendered:
+1. *Sanganeri Hand Block Print 60x60 Cotton Fabric* — ₹120 / meter (MOQ 20m)
+2. *Hand Block Printed Waffle Cotton Kurti / Dress* — ₹750
+3. *Hand Block Printed Cotton Saree (Indigo & Black)* — ₹800
+4. *Maternity & Feeding Hand Block Gown* — ₹450
+5. *Floral Sanganeri Table Cover / Single Bed Sheet* — ₹500
+6. *Handmade Quilted Floral Tote Bag* — ₹450
+7. *Natural Dabu Mud-Resist Indigo Cotton Fabric* — ₹165 / meter (MOQ 20m)
+8. *Pure Mulmul Cotton Running Fabric (Jaipuri Floral Buti)* — ₹135 / meter (MOQ 20m)
+9. *Hand Block Chanderi Silk Blend Suit Set with Dupatta* — ₹1,350
+10. *Artisan Hand-Block Cotton Kimono Robe* — ₹850 (Authentic textile imagery)
+11. *Hand-Block Cotton Canvas Cushion Covers (Set of 2)* — ₹380
+12. *Pure Mulmul Hand-Quilted Jaipuri Razai (Single)* — ₹1,450
+
+- **Out of Stock State**: When an item is marked out of stock in Admin or Google Sheets, the product card displays an "Out of Stock" badge and changes the button to "Inquire for Restock", preventing accidental orders of unavailable fabrics.
+- **Image Quality Fix**: Verified replacement of all generic stock images with authentic Indian hand-block printing and sun-curing workshop photography.
+
+---
+
+## 🧮 Dynamic B2B Wholesale Yardage Calculator
+
+- **Fabric Quality Dropdown**: Populated dynamically from `store-config.js`.
+- **Synchronized Slider & Inputs**: 20m to 2,000m+ yardage selection.
+- **Dynamic Tier Calculation**: Automatically calculates tiered discounts, net effective rates, total order estimate, cargo weight, and dispatch timelines.
+- **One-Click WhatsApp Quotation**: Encodes the exact calculation into a pre-formatted WhatsApp message sent directly to `+91 90248 56205`.
+
+---
+
+## 🚀 How to Run Locally & Deploy
+
+### Run Locally:
+```powershell
+node serve.js
+# Open http://localhost:3000 in your browser
+# Open http://localhost:3000/admin.html for Owner Desk (PIN: 1965)
 ```
-Or import the repository directly on [vercel.com](https://vercel.com). Framework preset: **Other / Static**.
 
-### Deploy to Netlify:
-```bash
-# Using Netlify CLI
-npx netlify deploy --prod --dir=.
-```
-Or drag-and-drop the project folder to [app.netlify.com/drop](https://app.netlify.com/drop).
-
-### Deploy to GitHub Pages:
-Push to a repository, go to **Settings > Pages**, select `main` branch and `/ (root)` folder.
-
+### GitHub Repository & Live Pages:
+- **GitHub Repository**: [https://github.com/aryan-gaikwad30/chhipa-handblock-printroom](https://github.com/aryan-gaikwad30/chhipa-handblock-printroom)
+- **Live GitHub Pages URL**: [https://aryan-gaikwad30.github.io/chhipa-handblock-printroom/](https://aryan-gaikwad30.github.io/chhipa-handblock-printroom/)
+- **Live Admin Portal**: [https://aryan-gaikwad30.github.io/chhipa-handblock-printroom/admin.html](https://aryan-gaikwad30.github.io/chhipa-handblock-printroom/admin.html)

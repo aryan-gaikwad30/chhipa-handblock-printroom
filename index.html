@@ -64,7 +64,7 @@
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
       <div class="flex items-center gap-2">
         <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="font-medium tracking-wide">
+        <span id="top-announcement-text" class="font-medium tracking-wide">
           Direct Manufacturer Pricing • 60+ Years in Sanganer (Est. 1965) • Pan-India & Global Export
         </span>
       </div>
@@ -73,13 +73,13 @@
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
-          Open Daily, 9:00 AM – 8:00 PM
+          <span id="top-operating-hours">Open Daily, 9:00 AM – 8:00 PM</span>
         </span>
-        <a href="tel:+919024856205" class="hover:text-white flex items-center gap-1 font-semibold text-amber-300">
+        <a id="top-phone-link" href="tel:+919024856205" class="hover:text-white flex items-center gap-1 font-semibold text-amber-300">
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
           </svg>
-          +91 90248 56205
+          <span id="top-phone-display">+91 90248 56205</span>
         </a>
       </div>
     </div>
@@ -129,6 +129,7 @@
         <div class="hidden sm:flex items-center gap-3">
           <!-- Social Icons -->
           <a 
+            id="nav-instagram-link"
             href="https://instagram.com/chhipahandblockprintroom" 
             target="_blank" 
             rel="noopener noreferrer" 
@@ -140,6 +141,7 @@
             </svg>
           </a>
           <a 
+            id="nav-facebook-link"
             href="https://facebook.com/chhipahandblockprintroom" 
             target="_blank" 
             rel="noopener noreferrer" 
@@ -153,6 +155,7 @@
 
           <!-- Direct WhatsApp CTA Button -->
           <a 
+            id="nav-wa-cta-desktop"
             href="https://wa.me/919024856205?text=Hello%20Chhipa%20Handblock%20Printroom%2C%20I%20am%20interested%20in%20your%20Sanganeri%20handblock%20fabrics." 
             target="_blank" 
             rel="noopener noreferrer" 
@@ -168,10 +171,11 @@
         <!-- Mobile Hamburger Button -->
         <div class="flex items-center gap-2 lg:hidden">
           <a 
+            id="nav-wa-cta-mobile-icon"
             href="https://wa.me/919024856205" 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="sm:hidden w-9 h-9 rounded-full bg-emerald-600 text-white flex items-center justify-center"
+            class="sm:hidden w-9 h-9 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow"
             title="Chat on WhatsApp"
           >
             <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24">
@@ -230,18 +234,18 @@
 
       <div class="mt-8 pt-6 border-t border-[#E8DECE]">
         <p class="text-xs font-semibold uppercase tracking-wider text-stone-600 mb-2">Sanganer Workshop</p>
-        <p class="text-xs text-stone-700 leading-relaxed mb-3">
+        <p id="drawer-address" class="text-xs text-stone-700 leading-relaxed mb-3">
           Plot No. 9, Miya Bajaj Gali, Near Kanwar Ka Bag, Dinesh Colony, Sanganer, Jaipur 302029
         </p>
-        <p class="text-xs text-stone-700 mb-4 font-semibold text-[#1B365D]">
+        <p id="drawer-hours" class="text-xs text-stone-700 mb-4 font-semibold text-[#1B365D]">
           Daily: 9:00 AM – 8:00 PM
         </p>
         <div class="flex items-center gap-3">
-          <a href="https://instagram.com/chhipahandblockprintroom" target="_blank" class="text-xs font-semibold text-[#1B365D] hover:underline flex items-center gap-1">
+          <a id="drawer-instagram-link" href="https://instagram.com/chhipahandblockprintroom" target="_blank" class="text-xs font-semibold text-[#1B365D] hover:underline flex items-center gap-1">
             Instagram ↗
           </a>
           <span class="text-stone-300">•</span>
-          <a href="https://facebook.com/chhipahandblockprintroom" target="_blank" class="text-xs font-semibold text-[#1B365D] hover:underline flex items-center gap-1">
+          <a id="drawer-facebook-link" href="https://facebook.com/chhipahandblockprintroom" target="_blank" class="text-xs font-semibold text-[#1B365D] hover:underline flex items-center gap-1">
             Facebook ↗
           </a>
         </div>
@@ -250,7 +254,8 @@
 
     <div class="pt-6 border-t border-[#E8DECE]">
       <a 
-        href="https://wa.me/919024856205?text=Hello%20Chhipa%20Handblock%20Printroom%2C%20I%20am%20contacting%20you%20from%20your%20website." 
+        id="nav-wa-cta-drawer"
+        href="https://wa.me/919024856205" 
         target="_blank"
         class="w-full inline-flex items-center justify-center gap-2 bg-[#1B365D] text-white py-3 rounded-lg font-semibold text-sm shadow-md"
       >
@@ -357,7 +362,6 @@
         
         <div class="flex items-start gap-3.5">
           <div class="w-11 h-11 rounded-lg bg-[#F3ECE1] text-[#1B365D] flex items-center justify-center flex-shrink-0">
-            <!-- Leaf / Natural Dye Icon -->
             <svg class="w-6 h-6 text-emerald-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
             </svg>
@@ -370,7 +374,6 @@
 
         <div class="flex items-start gap-3.5">
           <div class="w-11 h-11 rounded-lg bg-[#F3ECE1] text-[#1B365D] flex items-center justify-center flex-shrink-0">
-            <!-- Teak Block Icon -->
             <svg class="w-6 h-6 text-[#B84A39]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
             </svg>
@@ -383,7 +386,6 @@
 
         <div class="flex items-start gap-3.5">
           <div class="w-11 h-11 rounded-lg bg-[#F3ECE1] text-[#1B365D] flex items-center justify-center flex-shrink-0">
-            <!-- Pan India & Export Icon -->
             <svg class="w-6 h-6 text-[#1B365D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
@@ -396,7 +398,6 @@
 
         <div class="flex items-start gap-3.5">
           <div class="w-11 h-11 rounded-lg bg-[#F3ECE1] text-[#1B365D] flex items-center justify-center flex-shrink-0">
-            <!-- Direct Manufacturer Pricing -->
             <svg class="w-6 h-6 text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
             </svg>
@@ -477,31 +478,32 @@
 
       </div>
 
-      <!-- Product Cards Grid (Populated dynamically via main.js) -->
+      <!-- Product Cards Grid (Dynamically rendered from store-config.js) -->
       <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-        <!-- Rendered by JavaScript -->
+        <!-- Rendered by JavaScript via ChhipaStore.get().products -->
       </div>
 
-      <!-- Sample Swatch Box Banner -->
-      <div class="mt-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#1B365D] to-[#12243F] text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+      <!-- Dynamic Sanganer Swatch Box Banner (Toggleable & Bound to store-config.js) -->
+      <div id="swatch-banner-container" class="mt-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#1B365D] to-[#12243F] text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
         <div class="space-y-2 text-center md:text-left">
           <span class="inline-block px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-semibold uppercase tracking-wider">
             For Fashion Designers & Boutique Owners
           </span>
-          <h3 class="font-serif-heading text-2xl sm:text-3xl font-bold">
+          <h3 id="swatch-banner-title" class="font-serif-heading text-2xl sm:text-3xl font-bold">
             Curating a New Apparel Line? Order Our Sanganer Swatch Box.
           </h3>
-          <p class="text-xs sm:text-sm text-stone-300 max-w-xl">
+          <p id="swatch-banner-desc" class="text-xs sm:text-sm text-stone-300 max-w-xl">
             Receive 10 tactile fabric swatches (60x60 Cambric, Mulmul, Dabu Indigo, Chanderi, and Duck Canvas) plus our printed motif catalogue delivered to your design studio within 48 hours.
           </p>
         </div>
         <div class="flex-shrink-0">
           <a 
-            href="https://wa.me/919024856205?text=Hello%20Chhipa%20Handblock%2C%20I%20would%20like%20to%20order%20the%20Sanganer%20Fabric%20Swatch%20Box%20for%20my%20studio." 
+            id="swatch-banner-cta"
+            href="https://wa.me/919024856205" 
             target="_blank"
             class="inline-flex items-center gap-2 bg-[#B84A39] hover:bg-[#98382A] text-white px-6 py-3.5 rounded-lg text-xs font-bold tracking-wider uppercase transition-all shadow-md"
           >
-            <span>Request Swatch Box (₹299)</span>
+            <span>Request Swatch Box (₹499)</span>
             <svg class="w-4 h-4 fill-emerald-300" viewBox="0 0 24 24">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.711 1.457h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
             </svg>
@@ -537,7 +539,7 @@
         <!-- Left: Interactive Inputs Card -->
         <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-[#E8DECE] shadow-sm space-y-6">
           
-          <!-- Input 1: Fabric Base -->
+          <!-- Input 1: Fabric Base (Dynamically populated from store-config.js) -->
           <div>
             <label for="calc-fabric" class="block text-xs font-bold uppercase tracking-wider text-[#1B365D] mb-2">
               1. Select Fabric Base Quality
@@ -547,11 +549,7 @@
                 id="calc-fabric" 
                 class="w-full px-4 py-3 bg-[#FAF6F0] rounded-xl border border-[#E8DECE] text-sm font-semibold text-stone-900 focus:outline-none focus:ring-2 focus:ring-[#1B365D] transition-colors"
               >
-                <option value="cambric" selected>60x60 Cambric Cotton (Base ₹120 / m) — Most Popular for Kurtis & Shirts</option>
-                <option value="mulmul">Mulmul Cotton (Base ₹135 / m) — Ultra-Soft Sheer Summer Drape</option>
-                <option value="chanderi">Chanderi Silk Blend (Base ₹260 / m) — Festive Lustre with Gold Borders</option>
-                <option value="dabu">Natural Indigo Dabu Print (Base ₹165 / m) — Organic Mud-Resist Craft</option>
-                <option value="sheeting">Heavy Sheeting Cotton (Base ₹180 / m) — 20s Count Bed Linen & Decor</option>
+                <!-- Populated dynamically via ChhipaStore.get().wholesaleCalculator.fabrics -->
               </select>
             </div>
             <p class="text-[11px] text-stone-500 mt-1.5">All fabrics are 44-inch width standard (extra-width available on request).</p>
@@ -620,25 +618,25 @@
 
             <!-- Custom Notice Banner -->
             <div id="custom-production-notice" class="mt-3 p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-900 hidden">
-              <strong>Custom Block Development Active (+₹15/m):</strong> Includes Pantone shade matching, laboratory sample swatch approval, and exclusive wooden block allocation. Minimum recommended quantity: 100 meters.
+              <strong>Custom Block Development Active (<span id="calc-surcharge-badge">+₹15/m</span>):</strong> Includes Pantone shade matching, laboratory sample swatch approval, and exclusive wooden block allocation. Minimum recommended quantity: 100 meters.
             </div>
           </div>
 
-          <!-- Wholesale Discount Ladder Explainer -->
+          <!-- Dynamic Wholesale Discount Ladder Explainer -->
           <div class="pt-4 border-t border-[#E8DECE] bg-[#FAF6F0] p-4 rounded-xl">
             <h4 class="text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">Automated Wholesale Discount Tiers:</h4>
             <div class="grid grid-cols-3 gap-2 text-center text-xs">
               <div class="p-2 rounded bg-white border border-[#E8DECE]">
-                <span class="block text-[11px] text-stone-500 font-medium">100m – 499m</span>
-                <span class="font-bold text-[#1B365D]">5% Off</span>
+                <span id="calc-tier-1-range" class="block text-[11px] text-stone-500 font-medium">100m – 499m</span>
+                <span id="calc-tier-1-pct" class="font-bold text-[#1B365D]">5% Off</span>
               </div>
               <div class="p-2 rounded bg-white border border-[#E8DECE]">
-                <span class="block text-[11px] text-stone-500 font-medium">500m – 999m</span>
-                <span class="font-bold text-[#1B365D]">12% Off</span>
+                <span id="calc-tier-2-range" class="block text-[11px] text-stone-500 font-medium">500m – 999m</span>
+                <span id="calc-tier-2-pct" class="font-bold text-[#1B365D]">12% Off</span>
               </div>
               <div class="p-2 rounded bg-white border border-[#E8DECE]">
-                <span class="block text-[11px] text-stone-500 font-medium">1,000m+</span>
-                <span class="font-bold text-emerald-700">18% Off</span>
+                <span id="calc-tier-3-range" class="block text-[11px] text-stone-500 font-medium">1,000m+</span>
+                <span id="calc-tier-3-pct" class="font-bold text-emerald-700">18% Off</span>
               </div>
             </div>
           </div>
@@ -741,7 +739,7 @@
           </div>
 
           <p class="text-[11px] text-stone-500 text-center mt-3">
-            Direct response from master printer desk (+91 90248 56205) within 15 minutes during operating hours.
+            Direct response from master printer desk within 15 minutes during operating hours.
           </p>
 
         </div>
@@ -827,11 +825,11 @@
           </div>
         </div>
 
-        <!-- Step 3 -->
+        <!-- Step 3 (REPLACED GENERIC STOCK PHOTO WITH AUTHENTIC TEXTILE DRYING UNDER SUN) -->
         <div class="bg-white rounded-2xl overflow-hidden border border-[#E8DECE] shadow-sm flex flex-col group hover:shadow-md transition-shadow">
           <div class="aspect-[16/10] overflow-hidden bg-stone-100">
             <img 
-              src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?auto=format&fit=crop&w=800&q=80" 
+              src="https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?auto=format&fit=crop&w=800&q=80" 
               alt="Hand Stamping and Sun Curing in Sanganer" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
@@ -948,55 +946,9 @@
           </div>
         </div>
 
-        <!-- Right: Client Testimonials / Social Proof -->
-        <div class="lg:col-span-6 space-y-4">
-          <div class="p-6 rounded-2xl bg-[#FAF6F0] border border-[#E8DECE] shadow-sm">
-            <div class="flex items-center gap-1 text-amber-500 mb-2">
-              ★★★★★
-            </div>
-            <p class="text-xs sm:text-sm text-stone-700 italic leading-relaxed">
-              "We have been sourcing 60x60 Cambric and Dabu prints for our summer kurtis from Chhipa Handblock since 2018. Their consistency, wash-fastness, and prompt dispatch on WhatsApp have helped our brand scale to 4 retail stores across Bengaluru."
-            </p>
-            <div class="mt-4 pt-3 border-t border-[#E8DECE] flex items-center justify-between">
-              <div>
-                <h5 class="text-xs font-bold text-stone-900">Ananya Sen</h5>
-                <span class="text-[11px] text-stone-500">Founder, Tara Ethical Pret (Bengaluru)</span>
-              </div>
-              <span class="text-[11px] px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-semibold">Verified B2B Buyer</span>
-            </div>
-          </div>
-
-          <div class="p-6 rounded-2xl bg-[#FAF6F0] border border-[#E8DECE] shadow-sm">
-            <div class="flex items-center gap-1 text-amber-500 mb-2">
-              ★★★★★
-            </div>
-            <p class="text-xs sm:text-sm text-stone-700 italic leading-relaxed">
-              "The custom teak block development service was remarkable. Within 8 days they carved our custom floral motifs and dispatched 650 meters of mulmul cotton to our London studio. Outstanding authentic Sanganeri craftsmanship."
-            </p>
-            <div class="mt-4 pt-3 border-t border-[#E8DECE] flex items-center justify-between">
-              <div>
-                <h5 class="text-xs font-bold text-stone-900">Clara Jenkins</h5>
-                <span class="text-[11px] text-stone-500">Creative Director, Jenkins & Co. (UK)</span>
-              </div>
-              <span class="text-[11px] px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-semibold">Export Client</span>
-            </div>
-          </div>
-
-          <div class="p-6 rounded-2xl bg-[#FAF6F0] border border-[#E8DECE] shadow-sm">
-            <div class="flex items-center gap-1 text-amber-500 mb-2">
-              ★★★★★
-            </div>
-            <p class="text-xs sm:text-sm text-stone-700 italic leading-relaxed">
-              "Visiting their workshop in Dinesh Colony was an unforgettable experience. Being able to see our fabrics being hand-stamped on 20-meter long tables gave us complete confidence in their authentic roots."
-            </p>
-            <div class="mt-4 pt-3 border-t border-[#E8DECE] flex items-center justify-between">
-              <div>
-                <h5 class="text-xs font-bold text-stone-900">Rajesh Mehta</h5>
-                <span class="text-[11px] text-stone-500">Retailer & Wholesaler (Surat & Mumbai)</span>
-              </div>
-              <span class="text-[11px] px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-semibold">Workshop Visitor</span>
-            </div>
-          </div>
+        <!-- Right: Client Testimonials / Social Proof (Dynamically rendered from store-config.js) -->
+        <div id="testimonials-container" class="lg:col-span-6 space-y-4">
+          <!-- Dynamically populated from ChhipaStore.get().testimonials -->
         </div>
 
       </div>
@@ -1027,10 +979,8 @@
             <div>
               <span class="text-xs uppercase tracking-wider text-stone-500 font-bold block mb-1">Workshop Address</span>
               <h3 class="font-serif-heading text-xl font-bold text-[#1B365D] mb-2">Chhipa Handblock Printroom</h3>
-              <p class="text-sm text-stone-700 leading-relaxed">
-                Plot No. 9, Miya Bajaj Gali, Near Kanwar Ka Bag,<br />
-                Dinesh Colony, Sanganer, Jaipur,<br />
-                Rajasthan 302029, India
+              <p id="visit-address-text" class="text-sm text-stone-700 leading-relaxed">
+                Plot No. 9, Miya Bajaj Gali, Near Kanwar Ka Bag, Dinesh Colony, Sanganer, Jaipur, Rajasthan 302029, India
               </p>
             </div>
 
@@ -1043,7 +993,7 @@
                 </div>
                 <div>
                   <span class="text-xs text-stone-500 block">Operating Hours</span>
-                  <span class="font-semibold">Open Daily, 9:00 AM – 8:00 PM</span>
+                  <span id="visit-hours-text" class="font-semibold">Open Daily, 9:00 AM – 8:00 PM</span>
                 </div>
               </div>
 
@@ -1055,7 +1005,9 @@
                 </div>
                 <div>
                   <span class="text-xs text-stone-500 block">Direct WhatsApp & Phone</span>
-                  <a href="tel:+919024856205" class="font-bold text-[#1B365D] hover:underline">+91 90248 56205</a>
+                  <a id="visit-phone-link" href="tel:+919024856205" class="font-bold text-[#1B365D] hover:underline">
+                    <span id="visit-phone-display">+91 90248 56205</span>
+                  </a>
                 </div>
               </div>
 
@@ -1085,6 +1037,7 @@
 
           <div class="mt-6 pt-4 border-t border-[#E8DECE] flex flex-col sm:flex-row gap-3">
             <a 
+              id="visit-directions-btn"
               href="https://www.google.com/maps/search/?api=1&query=Plot+No.+9,+Miya+Bajaj+Gali,+Near+Kanwar+Ka+Bag,+Dinesh+Colony,+Sanganer,+Jaipur,+Rajasthan+302029" 
               target="_blank" 
               rel="noopener noreferrer"
@@ -1097,6 +1050,7 @@
             </a>
             
             <a 
+              id="visit-notify-wa-btn"
               href="https://wa.me/919024856205?text=Hello%20Chhipa%20Handblock%2C%20I%20am%20planning%20to%20visit%20your%20Sanganer%20workshop%20today.%20Please%20share%20directions." 
               target="_blank" 
               rel="noopener noreferrer"
@@ -1339,7 +1293,7 @@
       type="button" 
       class="w-14 h-14 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center shadow-2xl pulse-wa transition-transform hover:scale-105 active:scale-95"
       aria-label="Open WhatsApp live assistant"
-      title="Chat on WhatsApp (+91 90248 56205)"
+      title="Chat on WhatsApp"
     >
       <svg class="w-7 h-7 fill-white" viewBox="0 0 24 24">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.711 1.457h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
@@ -1360,6 +1314,7 @@
       <span>B2B Calculator</span>
     </a>
     <a 
+      id="mobile-bar-wa-btn"
       href="https://wa.me/919024856205?text=Hello%20Chhipa%20Handblock%2C%20I%20am%20browsing%20your%20website%20and%20would%20like%20to%20connect." 
       target="_blank" 
       class="flex-1 py-2 px-3 rounded-lg bg-[#1B365D] text-white text-center text-xs font-bold flex items-center justify-center gap-1.5 shadow-md"
@@ -1393,6 +1348,7 @@
           </p>
           <div class="flex items-center gap-3 pt-2">
             <a 
+              id="footer-instagram-link"
               href="https://instagram.com/chhipahandblockprintroom" 
               target="_blank" 
               rel="noopener noreferrer"
@@ -1404,6 +1360,7 @@
               </svg>
             </a>
             <a 
+              id="footer-facebook-link"
               href="https://facebook.com/chhipahandblockprintroom" 
               target="_blank" 
               rel="noopener noreferrer"
@@ -1428,6 +1385,11 @@
             <li><a href="#wholesale-calculator" class="hover:text-amber-300 transition-colors">B2B Wholesale Calculator</a></li>
             <li><a href="#craft-story" class="hover:text-amber-300 transition-colors">The Sanganer Craft Story</a></li>
             <li><a href="#workshop-visit" class="hover:text-amber-300 transition-colors">Visit Sanganer Workshop</a></li>
+            <li>
+              <a href="admin.html" class="inline-flex items-center gap-1.5 text-amber-300 hover:text-white font-semibold pt-1 border-t border-indigo-900/40 transition-colors">
+                <span>🔒 Owner Admin Portal</span>
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -1439,25 +1401,29 @@
               <svg class="w-4 h-4 text-amber-300 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
               </svg>
-              <span>Plot No. 9, Miya Bajaj Gali, Near Kanwar Ka Bag, Dinesh Colony, Sanganer, Jaipur, Rajasthan 302029</span>
+              <span id="footer-address-text">Plot No. 9, Miya Bajaj Gali, Near Kanwar Ka Bag, Dinesh Colony, Sanganer, Jaipur, Rajasthan 302029</span>
             </p>
             <p class="flex items-center gap-2">
               <svg class="w-4 h-4 text-amber-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
               </svg>
-              <a href="tel:+919024856205" class="hover:text-white font-semibold text-amber-200">+91 90248 56205</a>
+              <a id="footer-phone-link" href="tel:+919024856205" class="hover:text-white font-semibold text-amber-200">
+                <span id="footer-phone-display">+91 90248 56205</span>
+              </a>
             </p>
             <p class="flex items-center gap-2">
               <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.711 1.457h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
               </svg>
-              <a href="https://wa.me/919024856205" target="_blank" class="hover:text-white font-semibold text-emerald-400">WhatsApp: +91 90248 56205</a>
+              <a id="footer-wa-link" href="https://wa.me/919024856205" target="_blank" class="hover:text-white font-semibold text-emerald-400">
+                <span id="footer-wa-display">WhatsApp: +91 90248 56205</span>
+              </a>
             </p>
             <p class="flex items-center gap-2 text-stone-400">
               <svg class="w-4 h-4 text-amber-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
-              <span>Operating Hours: Open Daily, 9:00 AM – 8:00 PM</span>
+              <span id="footer-hours-display">Operating Hours: Open Daily, 9:00 AM – 8:00 PM</span>
             </p>
           </div>
         </div>
@@ -1475,14 +1441,16 @@
           <span>Azo-Free Natural Dyes</span>
           <span>•</span>
           <span>Direct Manufacturer</span>
+          <span>•</span>
+          <a href="admin.html" class="text-amber-400 hover:underline">Owner Desk ↗</a>
         </div>
       </div>
 
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Dynamic Data Engine & Main Application Scripts -->
+  <script src="assets/js/store-config.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-

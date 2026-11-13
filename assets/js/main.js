@@ -1,306 +1,7 @@
 /**
- * Chhipa Handblock Printroom - Main Interactive JavaScript
- * Heritage Sanganeri Hand Block Print Manufacturer & Wholesaler (Est. 1965)
- * Direct WhatsApp: +919024856205
+ * Chhipa Handblock Printroom - Main Dynamic Interactive Controller
+ * Driven by Centralized Dynamic Data Engine (store-config.js)
  */
-
-// Global Business Configuration
-const BUSINESS_CONFIG = {
-  name: "Chhipa Handblock Printroom",
-  tagline: "Hand Block Printroom Since 1965 — Living Legacy of Pioneers in Sanganeri Hand Block Printing",
-  whatsappNumber: "919024856205",
-  displayPhone: "+91 90248 56205",
-  address: "Plot No. 9, Miya Bajaj Gali, Near Kanwar Ka Bag, Dinesh Colony, Sanganer, Jaipur, Rajasthan 302029",
-  hours: "Open Daily, 9:00 AM – 8:00 PM",
-  instagram: "https://instagram.com/chhipahandblockprintroom",
-  facebook: "https://facebook.com/chhipahandblockprintroom"
-};
-
-// Realistic authentic product catalogue data
-const PRODUCTS = [
-  {
-    id: "fabric-6060-cotton",
-    title: "Sanganeri Hand Block Print 60x60 Cotton Fabric",
-    category: "running-fabrics",
-    price: 120,
-    priceUnit: "/ meter",
-    tag: "Best for Boutiques | MOQ 20m",
-    isUnitMeter: true,
-    minOrder: 20,
-    step: 5,
-    defaultQty: 20,
-    image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=80",
-    badgeColor: "bg-blue-900 text-amber-100",
-    specs: {
-      fabric: "100% Pure Cambric Cotton (60s x 60s)",
-      width: "44 inches (112 cm)",
-      gsm: "85 GSM (Lightweight, Breathable)",
-      technique: "Traditional Hand Block Printing (Rekh & Datta blocks)",
-      dyes: "Azo-free Natural & Rapid Fast Dyes",
-      usage: "Ideal for Kurtis, Tunics, Men's Shirts, Dresses, & Babywear",
-      moq: "20 meters per colorway / design"
-    },
-    description: "Our signature Sanganeri print crafted on high-density 60x60 cambric cotton. Features intricate Mughal floral booti stamped by master artisans in Sanganer using hand-carved teakwood blocks. Washed in natural river water for enduring colorfastness."
-  },
-  {
-    id: "apparel-waffle-kurti",
-    title: "Hand Block Printed Waffle Cotton Kurti / Dress",
-    category: "apparel",
-    price: 750,
-    priceUnit: "/ piece",
-    tag: "Ready to Wear",
-    isUnitMeter: false,
-    minOrder: 1,
-    step: 1,
-    defaultQty: 1,
-    image: "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=800&q=80",
-    badgeColor: "bg-emerald-900 text-emerald-100",
-    specs: {
-      fabric: "100% Textured Waffle Cotton (Zero Shrinkage)",
-      sizes: "XS, S, M, L, XL, XXL, 3XL (Custom sizing for bulk)",
-      technique: "Dabu Indigo Mud-Resist Handblock Stamping",
-      details: "Artisan wooden coconut shell buttons, side pockets",
-      washCare: "Cold gentle machine wash with mild detergent",
-      moq: "1 pc for retail | 15 pcs assorted sizes for wholesale"
-    },
-    description: "Contemporary comfort meets Sanganeri heritage. Crafted in breathable waffle honeycomb cotton with natural indigo geometric block printing. Features a relaxed silhouette, Mandarin collar, and functional wooden buttons."
-  },
-  {
-    id: "apparel-cotton-saree",
-    title: "Hand Block Printed Cotton Saree (Indigo & Black)",
-    category: "apparel",
-    price: 800,
-    priceUnit: "/ saree",
-    tag: "Artisan Edition",
-    isUnitMeter: false,
-    minOrder: 1,
-    step: 1,
-    defaultQty: 1,
-    image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80",
-    badgeColor: "bg-amber-900 text-amber-100",
-    specs: {
-      fabric: "100% Fine Chanderi Mulmul Cotton",
-      length: "6.5 Meters (Includes 0.8m running blouse piece)",
-      technique: "Syahi-Begar & Natural Indigo Block Printing",
-      pallu: "Elaborate Tree of Life / Mor Boota Pallu with Zari Border",
-      feel: "Ultra-drapey, feather-light, becomes softer with each wash",
-      moq: "1 pc for retail | 10 pcs assorted for boutiques"
-    },
-    description: "An authentic heirloom piece. Hand-stamped in deep natural Indigo and Syahi iron-black on ultra-soft Mulmul cotton. The saree displays rhythmic floral jal in the body and a dramatic multi-block printed border and pallu."
-  },
-  {
-    id: "apparel-maternity-gown",
-    title: "Maternity & Feeding Hand Block Gown",
-    category: "apparel",
-    price: 450,
-    priceUnit: "/ piece",
-    tag: "Bestseller",
-    isUnitMeter: false,
-    minOrder: 1,
-    step: 1,
-    defaultQty: 1,
-    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
-    badgeColor: "bg-rose-900 text-rose-100",
-    specs: {
-      fabric: "100% Breathable Malmal Cotton (Chemical-Free)",
-      features: "Concealed dual side zippers for easy breastfeeding",
-      silhouette: "Empire waist with adjustable drawstring back tie",
-      sizes: "Free Size (Comfortably fits Bust 34\" to 44\")",
-      dyes: "Skin-safe certified vegetable & non-toxic dyes",
-      moq: "1 pc for retail | 25 pcs for wholesale retailers"
-    },
-    description: "Designed for new and expecting mothers who value natural softness. Made with airy Sanganeri printed mulmul that stays gentle on sensitive skin. Equipped with discrete nursing zippers and an adjustable waist for all trimesters."
-  },
-  {
-    id: "home-floral-tablecover",
-    title: "Floral Sanganeri Table Cover / Single Bed Sheet",
-    category: "home-linen",
-    price: 500,
-    priceUnit: "/ piece",
-    tag: "Home Decor",
-    isUnitMeter: false,
-    minOrder: 1,
-    step: 1,
-    defaultQty: 1,
-    image: "https://images.unsplash.com/photo-1528458876861-544fd1761a91?auto=format&fit=crop&w=800&q=80",
-    badgeColor: "bg-teal-900 text-teal-100",
-    specs: {
-      dimensions: "60 x 90 inches (150 x 225 cm)",
-      fabric: "Heavy Sheeting 20s Cotton (210 GSM)",
-      border: "Triple-layer hand-stamped Sanganeri bel border",
-      multiuse: "Suitable as 6-seater dining table cover, single bed sheet, or sofa throw",
-      washCare: "Colorfast guaranteed, machine washable",
-      moq: "1 pc for retail | 20 pcs for export/wholesalers"
-    },
-    description: "Transform any dining or living room with authentic Rajasthani royal charm. Stamped on heavy count cotton that lays flat without slipping. Features centered Mughal floral medallions framed by crisp architectural border patterns."
-  },
-  {
-    id: "home-quilted-tote",
-    title: "Handmade Quilted Floral Tote Bag",
-    category: "home-linen",
-    price: 450,
-    priceUnit: "/ piece",
-    tag: "Export Favorite",
-    isUnitMeter: false,
-    minOrder: 1,
-    step: 1,
-    defaultQty: 1,
-    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80",
-    badgeColor: "bg-purple-900 text-purple-100",
-    specs: {
-      dimensions: "16\" Height x 18\" Width x 4\" Gusset Bottom",
-      construction: "Triple-layer hand-quilted with cotton batting inside",
-      handles: "12\" Drop reinforced padded shoulder straps",
-      pockets: "Zippered interior pocket + 2 slip organizers",
-      lining: "Reversible complementary block print cotton lining",
-      moq: "1 pc for retail | 30 pcs assorted for export buyers"
-    },
-    description: "Our viral export tote loved by ethical boutiques in Europe, USA, and Australia. Crafted from sturdy hand-block printed cotton and hand-quilted with meticulous parallel stitches. Machine washable, foldable, and durable for everyday use."
-  },
-  {
-    id: "fabric-dabu-indigo",
-    title: "Natural Dabu Mud-Resist Indigo Cotton Fabric",
-    category: "running-fabrics",
-    price: 165,
-    priceUnit: "/ meter",
-    tag: "Heritage Craft | MOQ 20m",
-    isUnitMeter: true,
-    minOrder: 20,
-    step: 5,
-    defaultQty: 20,
-    image: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=800&q=80",
-    badgeColor: "bg-indigo-900 text-indigo-100",
-    specs: {
-      fabric: "100% Pure Cotton Sheeting (40s count)",
-      width: "44 inches",
-      process: "Patan mud-resist hand stamping & multi-dip fermented Indigo vats",
-      character: "Organic crackle lines & earthy scent characteristic of true Dabu",
-      color: "Deep Natural Mineral Indigo with ivory resist motifs",
-      moq: "20 meters per design"
-    },
-    description: "Traditional mud-resist printing using natural clay, gum, and lime (*Dabu*). Hand-dipped into our 8-foot-deep indigo ground vats in Sanganer. Yields a rich, organic indigo blue with signature artisan crackle textures."
-  },
-  {
-    id: "fabric-mulmul-cotton",
-    title: "Pure Mulmul Cotton Running Fabric (Jaipuri Floral Buti)",
-    category: "running-fabrics",
-    price: 135,
-    priceUnit: "/ meter",
-    tag: "Summer Essential | MOQ 20m",
-    isUnitMeter: true,
-    minOrder: 20,
-    step: 5,
-    defaultQty: 20,
-    image: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=800&q=80",
-    badgeColor: "bg-cyan-900 text-cyan-100",
-    specs: {
-      fabric: "100% Gossamer Mulmul Cotton (Super Fine 100s yarn)",
-      width: "44 inches",
-      weight: "65 GSM (Cloud-soft featherweight)",
-      dyes: "Safe vegetable & eco-reactive dyes",
-      application: "Flowing Anarkalis, summer resortwear, dupattas, and scarves",
-      moq: "20 meters per print"
-    },
-    description: "Renowned for its sheer, feather-soft drape. Ideal for warm climates and luxury summer collections. Stamped with delicate marigold and jasmine sprigs using heirloom Sanganeri wooden blocks."
-  },
-  {
-    id: "apparel-chanderi-suit",
-    title: "Hand Block Chanderi Silk Blend Suit Set with Dupatta",
-    category: "apparel",
-    price: 1350,
-    priceUnit: "/ set (3-Piece)",
-    tag: "Festive Collection",
-    isUnitMeter: false,
-    minOrder: 1,
-    step: 1,
-    defaultQty: 1,
-    image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80",
-    badgeColor: "bg-yellow-900 text-yellow-100",
-    specs: {
-      kurta: "2.5 Meters Pure Chanderi Silk Blend (with subtle gold zari border)",
-      bottom: "2.5 Meters Soft 60x60 Cambric Cotton solid/printed",
-      dupatta: "2.5 Meters Chanderi Silk with traditional Sanganeri palla",
-      craft: "Gold Foil + Madder Red Sanganeri Hand Block Printing",
-      moq: "1 set for retail | 12 sets assorted for boutiques"
-    },
-    description: "An opulent 3-piece unstitched festive suit fabric set. Features rich Chanderi silk fabric with subtle zari weaves, hand-stamped with intricate gold and madder terracotta motifs. Comes with a matching lightweight statement dupatta."
-  },
-  {
-    id: "apparel-kimono-robe",
-    title: "Artisan Hand-Block Cotton Kimono Robe",
-    category: "apparel",
-    price: 850,
-    priceUnit: "/ piece",
-    tag: "Export Bestseller",
-    isUnitMeter: false,
-    minOrder: 1,
-    step: 1,
-    defaultQty: 1,
-    image: "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?auto=format&fit=crop&w=800&q=80",
-    badgeColor: "bg-blue-800 text-blue-100",
-    specs: {
-      fabric: "100% Breathable Cambric Cotton",
-      length: "48 inches (Midi / Full Length)",
-      features: "Wide kimono sleeves, removable matching waist sash, 2 front pockets",
-      size: "One-Size-Fits-Most (US 2 - 16 / UK 6 - 20)",
-      moq: "1 pc for retail | 20 pcs assorted prints for wholesale"
-    },
-    description: "Loved by boutique resorts and luxury loungewear brands worldwide. Combining classic Japanese kimono proportions with authentic Sanganeri botanical block prints. Perfect for morning coffee, poolside lounging, or evening relaxation."
-  },
-  {
-    id: "home-canvas-cushions",
-    title: "Hand-Block Cotton Canvas Cushion Covers (Set of 2)",
-    category: "home-linen",
-    price: 380,
-    priceUnit: "/ pair (2 pcs)",
-    tag: "Home Decor",
-    isUnitMeter: false,
-    minOrder: 1,
-    step: 1,
-    defaultQty: 1,
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80",
-    badgeColor: "bg-stone-800 text-stone-100",
-    specs: {
-      size: "16 x 16 inches (40 x 40 cm)",
-      fabric: "Heavy 280 GSM Pure Cotton Duck Canvas",
-      closure: "Hidden premium YKK zippered flap on back",
-      finishing: "Pre-shrunk, color-locked, piped edges",
-      moq: "1 pair for retail | 25 pairs for wholesale"
-    },
-    description: "Heavyweight architectural block print cushion covers that elevate any sofa or accent chair. Printed on dense canvas using earth-derived dyes with geometric Jaipuri jaal borders. Tailored with concealed zipper closures."
-  },
-  {
-    id: "home-jaipuri-razai",
-    title: "Pure Mulmul Hand-Quilted Jaipuri Razai (Single)",
-    category: "home-linen",
-    price: 1450,
-    priceUnit: "/ quilt",
-    tag: "Artisan Edition",
-    isUnitMeter: false,
-    minOrder: 1,
-    step: 1,
-    defaultQty: 1,
-    image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80",
-    badgeColor: "bg-red-900 text-red-100",
-    specs: {
-      size: "Single: 60 x 90 inches (Double available on request)",
-      filling: "100% Pure Carded Surgical Cotton (Super warm, yet only 800g)",
-      outer: "Double layer sheer Mulmul cotton with Sanganeri booti",
-      quilting: "Fine artisanal hand 'Tagaai' running stitches throughout",
-      moq: "1 pc for retail | 10 pcs for wholesale"
-    },
-    description: "The world-famous Jaipuri cotton quilt. Masterfully carded by traditional 'Dhunia' artisans, layered inside cloud-soft mulmul, and hand-quilted with microscopic stitches. Unbelievably lightweight yet delightfully warm for AC or winter comfort."
-  }
-];
-
-// Wholesale Calculator Configuration
-const FABRIC_RATES = {
-  cambric: { name: "60x60 Cambric Cotton", baseRate: 120, gsm: 85, weightPerM: 0.11 },
-  mulmul: { name: "Mulmul Cotton", baseRate: 135, gsm: 65, weightPerM: 0.08 },
-  chanderi: { name: "Chanderi Silk Blend", baseRate: 260, gsm: 95, weightPerM: 0.12 },
-  dabu: { name: "Natural Indigo Dabu Print", baseRate: 165, gsm: 110, weightPerM: 0.14 },
-  sheeting: { name: "Heavy Sheeting (Home Decor)", baseRate: 180, gsm: 210, weightPerM: 0.23 }
-};
 
 // Application State
 let currentCategory = "all";
@@ -308,25 +9,132 @@ let searchQuery = "";
 let currentProductQuantities = {};
 let selectedProductForModal = null;
 
-// Initialize quantities
-PRODUCTS.forEach(p => {
-  currentProductQuantities[p.id] = p.defaultQty;
-});
+// Initialize on DOM Ready
+document.addEventListener("DOMContentLoaded", async () => {
+  // Initialize Dynamic Store
+  if (window.ChhipaStore) {
+    await window.ChhipaStore.init();
+  }
 
-// DOM Ready initialization
-document.addEventListener("DOMContentLoaded", () => {
-  initCatalogue();
+  // Initial Render of All Dynamic Sections
+  renderAllDynamicSections();
+
+  // Listen for real-time updates from admin or Google Sheets sync
+  window.addEventListener("chhipa-store-updated", () => {
+    renderAllDynamicSections();
+  });
+
+  // Setup Event Listeners
+  initCatalogueListeners();
   initWholesaleCalculator();
   initWhatsAppAssistant();
   initMobileNavigation();
   initQuickModals();
 });
 
+/**
+ * Master Dynamic Renderer: Binds 100% of store-config.js data to DOM
+ */
+function renderAllDynamicSections() {
+  const store = window.ChhipaStore ? window.ChhipaStore.get() : null;
+  if (!store) return;
+
+  renderBusinessContact(store.business);
+  renderSwatchBanner(store.swatchBanner, store.business);
+  renderWholesaleCalculatorOptions(store.wholesaleCalculator);
+  renderProducts();
+  renderTestimonials(store.testimonials);
+}
+
 /* ==========================================================================
-   1. CATALOGUE & FILTERING SYSTEM
+   1. GLOBAL BUSINESS CONTACT & HEADER/FOOTER BINDINGS
    ========================================================================== */
 
-function initCatalogue() {
+function renderBusinessContact(biz) {
+  if (!biz) return;
+
+  // Announcement Bar
+  setText("top-announcement-text", biz.announcement || "Direct Manufacturer Pricing • 60+ Years in Sanganer (Est. 1965) • Pan-India & Global Export");
+  setText("top-operating-hours", biz.hours || "Open Daily, 9:00 AM – 8:00 PM");
+  setText("top-phone-display", biz.displayPhone || "+91 90248 56205");
+  setHref("top-phone-link", `tel:${biz.whatsappNumber}`);
+
+  // Header Nav WhatsApp CTAs
+  const waUrlGeneral = `https://wa.me/${biz.whatsappNumber}?text=${encodeURIComponent("Hello Chhipa Handblock Printroom, I am interested in your Sanganeri handblock fabrics.")}`;
+  setHref("nav-wa-cta-desktop", waUrlGeneral);
+  setHref("nav-wa-cta-mobile-icon", waUrlGeneral);
+  setHref("nav-wa-cta-drawer", waUrlGeneral);
+  setHref("mobile-bar-wa-btn", waUrlGeneral);
+
+  // Drawer Info
+  setText("drawer-address", biz.address);
+  setText("drawer-hours", biz.hours);
+
+  // Social Links
+  setHref("nav-instagram-link", biz.instagram);
+  setHref("nav-facebook-link", biz.facebook);
+  setHref("drawer-instagram-link", biz.instagram);
+  setHref("drawer-facebook-link", biz.facebook);
+  setHref("footer-instagram-link", biz.instagram);
+  setHref("footer-facebook-link", biz.facebook);
+
+  // Workshop Visit Section
+  setText("visit-address-text", biz.address);
+  setText("visit-hours-text", biz.hours);
+  setText("visit-phone-display", biz.displayPhone);
+  setHref("visit-phone-link", `tel:${biz.whatsappNumber}`);
+  setHref("visit-notify-wa-btn", `https://wa.me/${biz.whatsappNumber}?text=${encodeURIComponent("Hello Chhipa Handblock, I am planning to visit your Sanganer workshop today. Please share directions.")}`);
+
+  // Footer Contact & Hours
+  setText("footer-address-text", biz.address);
+  setText("footer-phone-display", biz.displayPhone);
+  setHref("footer-phone-link", `tel:${biz.whatsappNumber}`);
+  setText("footer-wa-display", `WhatsApp: ${biz.displayPhone}`);
+  setHref("footer-wa-link", `https://wa.me/${biz.whatsappNumber}`);
+  setText("footer-hours-display", `Operating Hours: ${biz.hours}`);
+
+  // Google Maps Directions link
+  const mapsSearchUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(biz.address)}`;
+  setHref("visit-directions-btn", mapsSearchUrl);
+}
+
+/* ==========================================================================
+   2. SANGANER SWATCH BOX BANNER
+   ========================================================================== */
+
+function renderSwatchBanner(banner, biz) {
+  const container = document.getElementById("swatch-banner-container");
+  if (!container) return;
+
+  if (!banner || banner.show === false) {
+    container.style.display = "none";
+    return;
+  }
+
+  container.style.display = "flex";
+  setText("swatch-banner-title", banner.title || "Curating a New Apparel Line? Order Our Sanganer Swatch Box.");
+  setText("swatch-banner-desc", banner.description || "Receive 10 tactile fabric swatches delivered to your studio within 48 hours.");
+  
+  const ctaBtn = document.getElementById("swatch-banner-cta");
+  if (ctaBtn) {
+    const priceText = banner.price ? `₹${banner.price}` : "₹499";
+    ctaBtn.innerHTML = `
+      <span>${banner.ctaText || `Request Swatch Box (${priceText})`}</span>
+      <svg class="w-4 h-4 fill-emerald-300" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.711 1.457h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+    `;
+    const waPhone = biz ? biz.whatsappNumber : "919024856205";
+    const waText = encodeURIComponent(`Hello Chhipa Handblock Printroom, I would like to order the Sanganer Fabric Swatch Box (${priceText}) for my studio.`);
+    ctaBtn.href = `https://wa.me/${waPhone}?text=${waText}`;
+  }
+}
+
+/* ==========================================================================
+   3. COLLECTIONS GRID (ALL 12 DYNAMIC PRODUCTS & OUT-OF-STOCK HANDLING)
+   ========================================================================== */
+
+function initCatalogueListeners() {
   const filterButtons = document.querySelectorAll(".filter-btn");
   const searchInput = document.getElementById("catalogue-search");
 
@@ -350,20 +158,23 @@ function initCatalogue() {
       renderProducts();
     });
   }
-
-  renderProducts();
 }
 
 function renderProducts() {
   const container = document.getElementById("product-grid");
   if (!container) return;
 
-  const filtered = PRODUCTS.filter(item => {
+  const store = window.ChhipaStore ? window.ChhipaStore.get() : null;
+  const products = store ? store.products : [];
+  const waPhone = store && store.business ? store.business.whatsappNumber : "919024856205";
+
+  const filtered = products.filter(item => {
     const matchesCategory = (currentCategory === "all") || (item.category === currentCategory);
     const matchesSearch = !searchQuery || 
       item.title.toLowerCase().includes(searchQuery) ||
-      item.tag.toLowerCase().includes(searchQuery) ||
-      item.description.toLowerCase().includes(searchQuery);
+      (item.tag && item.tag.toLowerCase().includes(searchQuery)) ||
+      (item.description && item.description.toLowerCase().includes(searchQuery)) ||
+      (item.fabricSubtitle && item.fabricSubtitle.toLowerCase().includes(searchQuery));
     return matchesCategory && matchesSearch;
   });
 
@@ -376,7 +187,7 @@ function renderProducts() {
           </svg>
         </div>
         <h4 class="font-serif-heading text-2xl font-bold text-[#1B365D]">No textiles found matching "${searchQuery}"</h4>
-        <p class="text-sm text-stone-600 mt-2">Try searching for cotton, kurti, saree, dabu, or table cover.</p>
+        <p class="text-sm text-stone-600 mt-2">Try searching for cambric, cotton, kurti, saree, dabu, or table cover.</p>
         <button onclick="resetCatalogueFilter()" class="mt-4 px-6 py-2 bg-[#1B365D] text-white text-sm font-semibold rounded-md hover:bg-[#12243F]">
           View All Collections
         </button>
@@ -386,36 +197,58 @@ function renderProducts() {
   }
 
   container.innerHTML = filtered.map(item => {
-    const qty = currentProductQuantities[item.id] || item.defaultQty;
+    // Initialize quantity state if missing
+    if (currentProductQuantities[item.id] === undefined) {
+      currentProductQuantities[item.id] = item.defaultQty || item.minOrder || 1;
+    }
+
+    const qty = currentProductQuantities[item.id];
     const itemTotal = item.price * qty;
     const unitLabel = item.isUnitMeter ? "Meters" : "Pcs";
+    const isOutOfStock = (item.inStock === false) || (item.tag && item.tag.toLowerCase().includes("out of stock"));
 
-    // Build pre-filled WhatsApp message URL
+    // Badge styling & text
+    let badgeClass = item.badgeColor || "bg-[#1B365D] text-white";
+    let badgeText = item.tag || "Artisan Craft";
+    if (isOutOfStock) {
+      badgeClass = "bg-stone-800 text-stone-200 border border-stone-600";
+      badgeText = "Out of Stock";
+    }
+
+    // WhatsApp Message
     const waText = encodeURIComponent(
       `Hello Chhipa Handblock Printroom,\n` +
       `I would like to inquire about this item from your website:\n\n` +
       `• Product: ${item.title}\n` +
-      `• Rate: ₹${item.price} ${item.priceUnit}\n` +
+      `• Rate: ₹${item.price} ${item.priceUnit || '/ piece'}\n` +
       `• Requested Quantity: ${qty} ${unitLabel}\n` +
       `• Approx Total: ₹${itemTotal.toLocaleString('en-IN')}\n\n` +
       `Please let me know current availability, dispatch time, and delivery charges to my location.`
     );
-    const waUrl = `https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${waText}`;
+    const waUrl = `https://wa.me/${waPhone}?text=${waText}`;
+
+    // Restock message if out of stock
+    const restockWaText = encodeURIComponent(
+      `Hello Chhipa Handblock Printroom,\n` +
+      `I am interested in ${item.title}. I see it is currently Out of Stock on your website.\n\n` +
+      `Please notify me when this design or fabric is back in stock / next batch is being stamped.`
+    );
+    const restockWaUrl = `https://wa.me/${waPhone}?text=${restockWaText}`;
 
     return `
-      <div class="product-card bg-white rounded-xl overflow-hidden border border-[#E8DECE] shadow-sm flex flex-col justify-between group">
+      <div class="product-card bg-white rounded-xl overflow-hidden border border-[#E8DECE] shadow-sm flex flex-col justify-between group ${isOutOfStock ? 'opacity-90' : ''}">
         <!-- Image & Badges -->
         <div class="relative overflow-hidden bg-stone-100 aspect-[4/3] product-image-container cursor-pointer" onclick="openProductModal('${item.id}')">
           <img 
             src="${item.image}" 
             alt="${item.title}" 
-            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ${isOutOfStock ? 'grayscale-[40%]' : ''}"
             loading="lazy"
             onerror="this.src='https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=80'"
           />
           <div class="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
-            <span class="inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm ${item.badgeColor}">
-              ${item.tag}
+            <span class="inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm ${badgeClass}">
+              ${badgeText}
             </span>
           </div>
           <button 
@@ -437,7 +270,7 @@ function renderProducts() {
           <div>
             <div class="flex items-baseline justify-between mb-2">
               <span class="text-xs font-semibold uppercase tracking-wider text-[#B84A39]">Sanganeri Craft</span>
-              <span class="text-xs text-stone-600 font-medium">${item.specs.fabric ? item.specs.fabric.split('(')[0] : 'Pure Cotton'}</span>
+              <span class="text-xs text-stone-600 font-medium">${item.fabricSubtitle || (item.specs && item.specs.fabric ? item.specs.fabric.split('(')[0] : 'Pure Cotton')}</span>
             </div>
             
             <h3 
@@ -448,7 +281,7 @@ function renderProducts() {
             </h3>
 
             <p class="text-xs text-stone-600 mt-2 line-clamp-2">
-              ${item.description}
+              ${item.description || 'Authentic Sanganeri hand block printed textile, crafted in Jaipur with natural dyes.'}
             </p>
 
             <!-- Price Display -->
@@ -457,7 +290,7 @@ function renderProducts() {
                 <span class="text-xs text-stone-600 uppercase font-medium">Wholesale Rate</span>
                 <div class="flex items-baseline gap-1">
                   <span class="font-serif-heading text-2xl font-bold text-[#1B365D]">₹${item.price}</span>
-                  <span class="text-xs text-stone-600 font-semibold">${item.priceUnit}</span>
+                  <span class="text-xs text-stone-600 font-semibold">${item.priceUnit || '/ piece'}</span>
                 </div>
               </div>
               <div class="text-right">
@@ -467,39 +300,59 @@ function renderProducts() {
             </div>
           </div>
 
-          <!-- Quantity Stepper & Order Buttons -->
+          <!-- Quantity Stepper & Order / Out of Stock Buttons -->
           <div class="mt-4 pt-3 border-t border-[#F3ECE1]">
-            <div class="flex items-center justify-between mb-3 bg-[#FAF6F0] p-1.5 rounded-lg border border-[#E8DECE]">
-              <span class="text-xs font-medium text-stone-700 ml-2">Order Quantity:</span>
-              <div class="flex items-center gap-1">
-                <button 
-                  type="button"
-                  onclick="updateProductQty('${item.id}', -${item.step})"
-                  class="w-7 h-7 rounded bg-white hover:bg-stone-200 border border-stone-300 text-stone-800 flex items-center justify-center font-bold text-sm transition-colors"
-                  aria-label="Decrease quantity"
-                >−</button>
-                <span class="w-12 text-center text-xs font-bold text-[#1B365D]">${qty} ${unitLabel}</span>
-                <button 
-                  type="button"
-                  onclick="updateProductQty('${item.id}', ${item.step})"
-                  class="w-7 h-7 rounded bg-white hover:bg-stone-200 border border-stone-300 text-stone-800 flex items-center justify-center font-bold text-sm transition-colors"
-                  aria-label="Increase quantity"
-                >+</button>
+            ${!isOutOfStock ? `
+              <div class="flex items-center justify-between mb-3 bg-[#FAF6F0] p-1.5 rounded-lg border border-[#E8DECE]">
+                <span class="text-xs font-medium text-stone-700 ml-2">Order Quantity:</span>
+                <div class="flex items-center gap-1">
+                  <button 
+                    type="button"
+                    onclick="updateProductQty('${item.id}', -${item.step || 1})"
+                    class="w-7 h-7 rounded bg-white hover:bg-stone-200 border border-stone-300 text-stone-800 flex items-center justify-center font-bold text-sm transition-colors"
+                    aria-label="Decrease quantity"
+                  >−</button>
+                  <span class="w-12 text-center text-xs font-bold text-[#1B365D]">${qty} ${unitLabel}</span>
+                  <button 
+                    type="button"
+                    onclick="updateProductQty('${item.id}', ${item.step || 1})"
+                    class="w-7 h-7 rounded bg-white hover:bg-stone-200 border border-stone-300 text-stone-800 flex items-center justify-center font-bold text-sm transition-colors"
+                    aria-label="Increase quantity"
+                  >+</button>
+                </div>
               </div>
-            </div>
 
-            <!-- Smart WhatsApp Button -->
-            <a 
-              href="${waUrl}" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="w-full inline-flex items-center justify-center gap-2 bg-[#1B365D] hover:bg-[#12243F] text-white py-2.5 px-4 rounded-lg font-semibold text-xs tracking-wide shadow-sm hover:shadow transition-all duration-200"
-            >
-              <svg class="w-4 h-4 fill-emerald-400" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.711 1.457h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-              </svg>
-              <span>Order / Inquire via WhatsApp</span>
-            </a>
+              <!-- Active WhatsApp Order Button -->
+              <a 
+                href="${waUrl}" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="w-full inline-flex items-center justify-center gap-2 bg-[#1B365D] hover:bg-[#12243F] text-white py-2.5 px-4 rounded-lg font-semibold text-xs tracking-wide shadow-sm hover:shadow transition-all duration-200"
+              >
+                <svg class="w-4 h-4 fill-emerald-400" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.711 1.457h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                <span>Order / Inquire via WhatsApp</span>
+              </a>
+            ` : `
+              <div class="space-y-2">
+                <div class="text-center py-1.5 px-3 rounded-lg bg-stone-100 text-stone-600 text-xs font-semibold">
+                  Currently Out of Stock in Sanganer Workshop
+                </div>
+                <!-- Disabled/Restock WhatsApp Button -->
+                <a 
+                  href="${restockWaUrl}" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="w-full inline-flex items-center justify-center gap-2 bg-stone-700 hover:bg-stone-800 text-white py-2 px-4 rounded-lg font-semibold text-xs tracking-wide transition-colors"
+                >
+                  <svg class="w-3.5 h-3.5 text-amber-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                  </svg>
+                  <span>Inquire for Restock / Next Batch</span>
+                </a>
+              </div>
+            `}
           </div>
         </div>
       </div>
@@ -508,17 +361,19 @@ function renderProducts() {
 }
 
 function updateProductQty(productId, delta) {
-  const product = PRODUCTS.find(p => p.id === productId);
+  const store = window.ChhipaStore ? window.ChhipaStore.get() : null;
+  const product = store ? store.products.find(p => p.id === productId) : null;
   if (!product) return;
 
-  const current = currentProductQuantities[productId] || product.defaultQty;
+  const current = currentProductQuantities[productId] || product.defaultQty || product.minOrder || 1;
+  const minRequired = product.minOrder || 1;
   const next = current + delta;
 
-  if (next >= product.minOrder) {
+  if (next >= minRequired) {
     currentProductQuantities[productId] = next;
     renderProducts();
   } else {
-    showToast(`Minimum order for this product is ${product.minOrder} ${product.isUnitMeter ? 'meters' : 'pcs'}`);
+    showToast(`Minimum order for this product is ${minRequired} ${product.isUnitMeter ? 'meters' : 'pcs'}`);
   }
 }
 
@@ -543,8 +398,45 @@ function resetCatalogueFilter() {
 }
 
 /* ==========================================================================
-   2. INTERACTIVE B2B WHOLESALE YARDAGE & PRICE CALCULATOR
+   4. B2B WHOLESALE CALCULATOR ENGINE (DYNAMIC CONFIGURATION)
    ========================================================================== */
+
+function renderWholesaleCalculatorOptions(calcConfig) {
+  const fabricSelect = document.getElementById("calc-fabric");
+  if (!fabricSelect || !calcConfig || !Array.isArray(calcConfig.fabrics)) return;
+
+  const selectedVal = fabricSelect.value;
+  fabricSelect.innerHTML = calcConfig.fabrics.map(f => {
+    return `<option value="${f.id}">
+      ${f.name} (Base ₹${f.baseRate} / m) — ${f.subtitle || ''}
+    </option>`;
+  }).join("");
+
+  if (selectedVal && calcConfig.fabrics.some(f => f.id === selectedVal)) {
+    fabricSelect.value = selectedVal;
+  }
+
+  // Update Tier explanatory boxes dynamically
+  if (Array.isArray(calcConfig.tiers) && calcConfig.tiers.length >= 3) {
+    const t1 = calcConfig.tiers[0];
+    const t2 = calcConfig.tiers[1];
+    const t3 = calcConfig.tiers[2];
+
+    setText("calc-tier-1-range", `${t1.minMeters}m – ${t1.maxMeters}m`);
+    setText("calc-tier-1-pct", `${t1.discountPercent}% Off`);
+
+    setText("calc-tier-2-range", `${t2.minMeters}m – ${t2.maxMeters}m`);
+    setText("calc-tier-2-pct", `${t2.discountPercent}% Off`);
+
+    setText("calc-tier-3-range", `${t3.minMeters}m+`);
+    setText("calc-tier-3-pct", `${t3.discountPercent}% Off`);
+  }
+
+  // Update Custom surcharge label if present
+  setText("calc-surcharge-badge", `+₹${calcConfig.customSurcharge || 15}/m`);
+  
+  updateCalculatorResults();
+}
 
 function initWholesaleCalculator() {
   const fabricSelect = document.getElementById("calc-fabric");
@@ -557,13 +449,11 @@ function initWholesaleCalculator() {
 
   if (!fabricSelect || !meterSlider || !meterInput) return;
 
-  // Sync Slider -> Number Input
   meterSlider.addEventListener("input", (e) => {
     meterInput.value = e.target.value;
     updateCalculatorResults();
   });
 
-  // Sync Number Input -> Slider
   meterInput.addEventListener("input", (e) => {
     let val = parseInt(e.target.value) || 20;
     if (val < 20) val = 20;
@@ -572,15 +462,12 @@ function initWholesaleCalculator() {
     updateCalculatorResults();
   });
 
-  // Fabric change
   fabricSelect.addEventListener("change", updateCalculatorResults);
 
-  // Customization Toggle
   if (customToggle) {
     customToggle.addEventListener("change", updateCalculatorResults);
   }
 
-  // Preset Chips
   chipButtons.forEach(chip => {
     chip.addEventListener("click", () => {
       const val = parseInt(chip.getAttribute("data-meters"));
@@ -592,49 +479,54 @@ function initWholesaleCalculator() {
     });
   });
 
-  // WhatsApp Quote button handler
   if (quoteWaBtn) {
     quoteWaBtn.addEventListener("click", sendWholesaleQuoteToWhatsApp);
   }
 
-  // Copy Quote button
   if (copyBtn) {
     copyBtn.addEventListener("click", copyWholesaleQuoteSummary);
   }
 
-  // Initial calculation
   updateCalculatorResults();
 }
 
 function updateCalculatorResults() {
-  const fabricKey = document.getElementById("calc-fabric")?.value || "cambric";
+  const store = window.ChhipaStore ? window.ChhipaStore.get() : null;
+  const calcConfig = store ? store.wholesaleCalculator : null;
+  if (!calcConfig) return;
+
+  const fabricSelect = document.getElementById("calc-fabric");
+  const fabricKey = fabricSelect ? fabricSelect.value : "cambric";
   const meters = parseInt(document.getElementById("calc-meters-input")?.value) || 20;
   const isCustom = document.getElementById("calc-custom-toggle")?.checked || false;
 
-  const fabricInfo = FABRIC_RATES[fabricKey] || FABRIC_RATES.cambric;
-  let baseRate = fabricInfo.baseRate;
+  const fabricInfo = calcConfig.fabrics.find(f => f.id === fabricKey) || calcConfig.fabrics[0] || {
+    name: "60x60 Cambric Cotton",
+    baseRate: 120,
+    weightPerM: 0.11
+  };
 
-  // Add custom design / color matching surcharge if active (+₹15/m)
-  const customSurcharge = isCustom ? 15 : 0;
-  baseRate += customSurcharge;
+  const surcharge = isCustom ? (calcConfig.customSurcharge || 15) : 0;
+  let baseRate = fabricInfo.baseRate + surcharge;
 
-  // Tiered Wholesale Discounts
+  // Calculate volume discount from dynamic tiers
   let discountPercent = 0;
   let tierLabel = "Standard Wholesale (20m - 99m)";
   let tierBadge = "bg-stone-200 text-stone-800";
 
-  if (meters >= 1000) {
-    discountPercent = 18;
-    tierLabel = "Export & Mega Batch Tier (1,000m+) • 18% Off";
-    tierBadge = "bg-emerald-100 text-emerald-800 border-emerald-300";
-  } else if (meters >= 500) {
-    discountPercent = 12;
-    tierLabel = "Production Volume Tier (500m - 999m) • 12% Off";
-    tierBadge = "bg-blue-100 text-blue-800 border-blue-300";
-  } else if (meters >= 100) {
-    discountPercent = 5;
-    tierLabel = "Boutique Starter Tier (100m - 499m) • 5% Off";
-    tierBadge = "bg-amber-100 text-amber-800 border-amber-300";
+  if (Array.isArray(calcConfig.tiers)) {
+    // Sort descending by minMeters to match highest qualifying tier first
+    const sortedTiers = [...calcConfig.tiers].sort((a, b) => b.minMeters - a.minMeters);
+    for (const tier of sortedTiers) {
+      if (meters >= tier.minMeters) {
+        discountPercent = tier.discountPercent;
+        tierLabel = tier.label || `${tier.minMeters}m+ Tier • ${tier.discountPercent}% Off`;
+        tierBadge = discountPercent >= 18 
+          ? "bg-emerald-100 text-emerald-800 border-emerald-300"
+          : (discountPercent >= 10 ? "bg-blue-100 text-blue-800 border-blue-300" : "bg-amber-100 text-amber-800 border-amber-300");
+        break;
+      }
+    }
   }
 
   const discountAmountPerMeter = (baseRate * discountPercent) / 100;
@@ -644,8 +536,10 @@ function updateCalculatorResults() {
   const totalSavings = originalTotalPrice - subtotalPrice;
 
   // Dispatch timeline calculation
-  let timeline = isCustom ? "7 – 10 Working Days (Lab Dips & Fresh Stamping)" : (meters > 500 ? "4 – 6 Working Days" : "2 – 3 Working Days (Ready Stock Rolls)");
-  let estWeightKg = Math.round(meters * fabricInfo.weightPerM * 10) / 10;
+  let timeline = isCustom 
+    ? "7 – 10 Working Days (Lab Dips & Custom Stamping)" 
+    : (meters > 500 ? "4 – 6 Working Days" : "2 – 3 Working Days (Ready Stock Rolls)");
+  let estWeightKg = Math.round(meters * (fabricInfo.weightPerM || 0.11) * 10) / 10;
 
   // Update UI Elements
   setText("res-fabric-name", fabricInfo.name);
@@ -678,17 +572,29 @@ function updateCalculatorResults() {
 }
 
 function sendWholesaleQuoteToWhatsApp() {
+  const store = window.ChhipaStore ? window.ChhipaStore.get() : null;
+  const calcConfig = store ? store.wholesaleCalculator : null;
+  const waPhone = store && store.business ? store.business.whatsappNumber : "919024856205";
+  if (!calcConfig) return;
+
   const fabricKey = document.getElementById("calc-fabric")?.value || "cambric";
   const meters = parseInt(document.getElementById("calc-meters-input")?.value) || 20;
   const isCustom = document.getElementById("calc-custom-toggle")?.checked || false;
 
-  const fabricInfo = FABRIC_RATES[fabricKey] || FABRIC_RATES.cambric;
-  let baseRate = fabricInfo.baseRate + (isCustom ? 15 : 0);
+  const fabricInfo = calcConfig.fabrics.find(f => f.id === fabricKey) || calcConfig.fabrics[0];
+  const surcharge = isCustom ? (calcConfig.customSurcharge || 15) : 0;
+  let baseRate = fabricInfo.baseRate + surcharge;
 
   let discountPercent = 0;
-  if (meters >= 1000) discountPercent = 18;
-  else if (meters >= 500) discountPercent = 12;
-  else if (meters >= 100) discountPercent = 5;
+  if (Array.isArray(calcConfig.tiers)) {
+    const sortedTiers = [...calcConfig.tiers].sort((a, b) => b.minMeters - a.minMeters);
+    for (const tier of sortedTiers) {
+      if (meters >= tier.minMeters) {
+        discountPercent = tier.discountPercent;
+        break;
+      }
+    }
+  }
 
   const netRate = baseRate * (1 - discountPercent / 100);
   const totalVal = Math.round(netRate * meters);
@@ -700,25 +606,28 @@ function sendWholesaleQuoteToWhatsApp() {
     `📌 *Wholesale Order Estimate*\n` +
     `• Fabric Base: ${fabricInfo.name}\n` +
     `• Quantity: ${meters} meters\n` +
-    `• Production Mode: ${isCustom ? 'Custom Block / Pantone Matching (+₹15/m)' : 'Ready Stock Designs'}\n` +
+    `• Production Mode: ${isCustom ? `Custom Block / Pantone Matching (+₹${surcharge}/m)` : 'Ready Stock Designs'}\n` +
     `• Tier Discount: ${discountPercent}% applied\n` +
     `• Net Wholesale Rate: ₹${netRate.toFixed(2)} / meter\n` +
     `• Estimated Order Value: ₹${totalVal.toLocaleString('en-IN')}\n` +
     `• Est. Dispatch: ${timeline}\n\n` +
     `Please share your current fabric swatch catalogue and confirm current running stock.`;
 
-  const url = `https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
+  const url = `https://wa.me/${waPhone}?text=${encodeURIComponent(message)}`;
   window.open(url, "_blank");
 }
 
 function copyWholesaleQuoteSummary() {
+  const store = window.ChhipaStore ? window.ChhipaStore.get() : null;
+  const phone = store && store.business ? store.business.displayPhone : "+91 90248 56205";
+
   const fabricName = document.getElementById("res-fabric-name")?.innerText || "";
   const meters = document.getElementById("res-total-meters")?.innerText || "";
   const netRate = document.getElementById("res-net-rate")?.innerText || "";
   const totalPrice = document.getElementById("res-total-price")?.innerText || "";
   const timeline = document.getElementById("res-timeline")?.innerText || "";
 
-  const textToCopy = `Chhipa Handblock Printroom Wholesale Quote\nFabric: ${fabricName}\nQuantity: ${meters}\nNet Rate: ${netRate}/m\nEstimated Total: ${totalPrice}\nTimeline: ${timeline}\nContact: +91 90248 56205 | Sanganer, Jaipur`;
+  const textToCopy = `Chhipa Handblock Printroom Wholesale Quote\nFabric: ${fabricName}\nQuantity: ${meters}\nNet Rate: ${netRate}/m\nEstimated Total: ${totalPrice}\nTimeline: ${timeline}\nContact: ${phone} | Sanganer, Jaipur`;
 
   navigator.clipboard.writeText(textToCopy).then(() => {
     showToast("Wholesale quote copied to clipboard!");
@@ -728,7 +637,39 @@ function copyWholesaleQuoteSummary() {
 }
 
 /* ==========================================================================
-   3. FLOATING SMART WHATSAPP ASSISTANT WIDGET
+   5. BUYER TESTIMONIALS (DYNAMIC RENDERING)
+   ========================================================================== */
+
+function renderTestimonials(testimonials) {
+  const container = document.getElementById("testimonials-container");
+  if (!container || !Array.isArray(testimonials)) return;
+
+  container.innerHTML = testimonials.map(item => {
+    const starString = "★".repeat(item.stars || 5);
+    return `
+      <div class="p-6 rounded-2xl bg-[#FAF6F0] border border-[#E8DECE] shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-1 text-amber-500 mb-2 font-bold text-sm tracking-wider">
+            ${starString}
+          </div>
+          <p class="text-xs sm:text-sm text-stone-700 italic leading-relaxed">
+            "${item.quote}"
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-[#E8DECE] flex items-center justify-between">
+          <div>
+            <h5 class="text-xs font-bold text-stone-900">${item.name}</h5>
+            <span class="text-[11px] text-stone-500">${item.role}</span>
+          </div>
+          <span class="text-[11px] px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-semibold">${item.badge || 'Verified Buyer'}</span>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+/* ==========================================================================
+   6. FLOATING SMART WHATSAPP ASSISTANT WIDGET
    ========================================================================== */
 
 function initWhatsAppAssistant() {
@@ -757,19 +698,20 @@ function initWhatsAppAssistant() {
     });
   }
 
-  // Click outside to close assistant card
   document.addEventListener("click", (e) => {
     if (!widgetCard.contains(e.target) && !toggleBtn.contains(e.target)) {
       widgetCard.classList.add("hidden");
     }
   });
 
-  // Custom text submission
   if (customSubmitBtn && customInput) {
     const handleSend = () => {
+      const store = window.ChhipaStore ? window.ChhipaStore.get() : null;
+      const waPhone = store && store.business ? store.business.whatsappNumber : "919024856205";
+
       const query = customInput.value.trim();
       const text = query ? query : "Hello Chhipa Handblock Printroom, I would like to inquire about your Sanganeri hand block prints.";
-      const waUrl = `https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`;
+      const waUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(text)}`;
       window.open(waUrl, "_blank");
       customInput.value = "";
       widgetCard.classList.add("hidden");
@@ -782,8 +724,11 @@ function initWhatsAppAssistant() {
   }
 }
 
-// Function called by quick-action chips
 window.sendWhatsAppChip = function(type) {
+  const store = window.ChhipaStore ? window.ChhipaStore.get() : null;
+  const waPhone = store && store.business ? store.business.whatsappNumber : "919024856205";
+  const address = store && store.business ? store.business.address : "Plot No. 9, Miya Bajaj Gali, Dinesh Colony, Sanganer, Jaipur";
+
   let message = "";
   switch(type) {
     case "wholesale":
@@ -796,13 +741,13 @@ window.sendWhatsAppChip = function(type) {
       message = "Hello Chhipa Handblock, I would like to purchase retail handblock suit sets / sarees / kurtis for personal use. Please share what is ready in stock.";
       break;
     case "visit":
-      message = `Hello Chhipa Handblock, I am planning to visit your Sanganer workshop at Plot No. 9, Miya Bajaj Gali, Dinesh Colony, Sanganer. Please share visitor timings and landmarks.`;
+      message = `Hello Chhipa Handblock, I am planning to visit your Sanganer workshop at ${address}. Please share visitor timings and landmarks.`;
       break;
     default:
       message = "Hello Chhipa Handblock Printroom, I would like to connect regarding your Sanganeri hand block prints.";
   }
 
-  const url = `https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
+  const url = `https://wa.me/${waPhone}?text=${encodeURIComponent(message)}`;
   window.open(url, "_blank");
 
   const widgetCard = document.getElementById("wa-widget-card");
@@ -810,7 +755,7 @@ window.sendWhatsAppChip = function(type) {
 };
 
 /* ==========================================================================
-   4. QUICK VIEW MODAL
+   7. QUICK VIEW MODAL
    ========================================================================== */
 
 function initQuickModals() {
@@ -831,7 +776,6 @@ function initQuickModals() {
     }
   });
 
-  // ESC key to close modal
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       modalBackdrop.classList.add("hidden");
@@ -842,15 +786,17 @@ function initQuickModals() {
 }
 
 window.openProductModal = function(productId) {
-  const item = PRODUCTS.find(p => p.id === productId);
+  const store = window.ChhipaStore ? window.ChhipaStore.get() : null;
+  const products = store ? store.products : [];
+  const item = products.find(p => p.id === productId);
   if (!item) return;
 
   selectedProductForModal = item;
   const modal = document.getElementById("product-modal");
   if (!modal) return;
 
-  const currentQty = currentProductQuantities[item.id] || item.defaultQty;
-  const unitLabel = item.isUnitMeter ? "Meters" : "Pieces";
+  const currentQty = currentProductQuantities[item.id] || item.defaultQty || item.minOrder || 1;
+  const isOutOfStock = (item.inStock === false) || (item.tag && item.tag.toLowerCase().includes("out of stock"));
 
   // Populate Modal Fields
   const imgEl = document.getElementById("modal-img");
@@ -860,13 +806,13 @@ window.openProductModal = function(productId) {
   }
 
   setText("modal-title", item.title);
-  setText("modal-tag", item.tag);
-  setText("modal-desc", item.description);
-  setText("modal-price", `₹${item.price} ${item.priceUnit}`);
+  setText("modal-tag", isOutOfStock ? "Out of Stock" : (item.tag || "Artisan Edition"));
+  setText("modal-desc", item.description || "Authentic Sanganeri hand block printed item.");
+  setText("modal-price", `₹${item.price} ${item.priceUnit || '/ piece'}`);
 
   // Build Specs Table
   const specsContainer = document.getElementById("modal-specs");
-  if (specsContainer) {
+  if (specsContainer && item.specs) {
     let specRows = "";
     for (const [key, val] of Object.entries(item.specs)) {
       const formattedKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
@@ -895,10 +841,11 @@ window.updateModalQty = function(delta) {
   const input = document.getElementById("modal-qty-input");
   if (!input) return;
 
-  let current = parseInt(input.value) || selectedProductForModal.defaultQty;
+  const minRequired = selectedProductForModal.minOrder || 1;
+  let current = parseInt(input.value) || minRequired;
   let next = current + delta;
-  if (next < selectedProductForModal.minOrder) {
-    showToast(`Minimum order is ${selectedProductForModal.minOrder} ${selectedProductForModal.isUnitMeter ? 'meters' : 'pcs'}`);
+  if (next < minRequired) {
+    showToast(`Minimum order is ${minRequired} ${selectedProductForModal.isUnitMeter ? 'meters' : 'pcs'}`);
     return;
   }
   input.value = next;
@@ -909,29 +856,55 @@ window.updateModalQty = function(delta) {
 
 function updateModalWhatsAppLink() {
   if (!selectedProductForModal) return;
+  const store = window.ChhipaStore ? window.ChhipaStore.get() : null;
+  const waPhone = store && store.business ? store.business.whatsappNumber : "919024856205";
+
   const input = document.getElementById("modal-qty-input");
-  const qty = parseInt(input?.value) || selectedProductForModal.defaultQty;
+  const qty = parseInt(input?.value) || selectedProductForModal.defaultQty || selectedProductForModal.minOrder || 1;
   const unitLabel = selectedProductForModal.isUnitMeter ? "Meters" : "Pcs";
   const total = selectedProductForModal.price * qty;
-
-  const waText = encodeURIComponent(
-    `Hello Chhipa Handblock Printroom,\n` +
-    `I am looking at ${selectedProductForModal.title} on your website.\n\n` +
-    `• Product: ${selectedProductForModal.title}\n` +
-    `• Rate: ₹${selectedProductForModal.price} ${selectedProductForModal.priceUnit}\n` +
-    `• Quantity: ${qty} ${unitLabel}\n` +
-    `• Approx Total: ₹${total.toLocaleString('en-IN')}\n\n` +
-    `Please share current stock availability, color options, and dispatch timeline.`
-  );
+  const isOutOfStock = (selectedProductForModal.inStock === false) || (selectedProductForModal.tag && selectedProductForModal.tag.toLowerCase().includes("out of stock"));
 
   const orderBtn = document.getElementById("modal-order-btn");
-  if (orderBtn) {
-    orderBtn.href = `https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${waText}`;
+  if (!orderBtn) return;
+
+  if (isOutOfStock) {
+    orderBtn.className = "w-full inline-flex items-center justify-center gap-2 bg-stone-700 hover:bg-stone-800 text-white py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-wider transition-all";
+    orderBtn.innerHTML = `
+      <svg class="w-4 h-4 text-amber-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+      </svg>
+      <span>Inquire for Restock / Next Batch</span>
+    `;
+    const restockText = encodeURIComponent(
+      `Hello Chhipa Handblock Printroom,\n` +
+      `I would like to inquire about the restocking schedule for: ${selectedProductForModal.title}.\n` +
+      `Please let me know when this will be available again.`
+    );
+    orderBtn.href = `https://wa.me/${waPhone}?text=${restockText}`;
+  } else {
+    orderBtn.className = "w-full inline-flex items-center justify-center gap-2 bg-[#1B365D] hover:bg-[#12243F] text-white py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-wider shadow-md transition-all";
+    orderBtn.innerHTML = `
+      <svg class="w-4 h-4 fill-emerald-400" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.711 1.457h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+      <span>Order via WhatsApp Now</span>
+    `;
+    const waText = encodeURIComponent(
+      `Hello Chhipa Handblock Printroom,\n` +
+      `I am looking at ${selectedProductForModal.title} on your website.\n\n` +
+      `• Product: ${selectedProductForModal.title}\n` +
+      `• Rate: ₹${selectedProductForModal.price} ${selectedProductForModal.priceUnit || '/ piece'}\n` +
+      `• Quantity: ${qty} ${unitLabel}\n` +
+      `• Approx Total: ₹${total.toLocaleString('en-IN')}\n\n` +
+      `Please share current stock availability, color options, and dispatch timeline.`
+    );
+    orderBtn.href = `https://wa.me/${waPhone}?text=${waText}`;
   }
 }
 
 /* ==========================================================================
-   5. MOBILE NAVIGATION & DRAWER
+   8. MOBILE NAVIGATION & DRAWER
    ========================================================================== */
 
 function initMobileNavigation() {
@@ -960,12 +933,17 @@ function initMobileNavigation() {
 }
 
 /* ==========================================================================
-   6. UTILITY HELPERS
+   9. UTILITY HELPERS
    ========================================================================== */
 
 function setText(id, text) {
   const el = document.getElementById(id);
-  if (el) el.innerText = text;
+  if (el && text !== undefined && text !== null) el.innerText = text;
+}
+
+function setHref(id, url) {
+  const el = document.getElementById(id);
+  if (el && url) el.href = url;
 }
 
 function showToast(message) {
@@ -991,4 +969,3 @@ function showToast(message) {
     toast.classList.add("opacity-0");
   }, 2600);
 }
-
